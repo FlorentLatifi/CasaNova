@@ -23,4 +23,7 @@ body {
 .nav-list ul li {
     margin: 0 15px;
   }
+  .nav-list ul li a:hover {
+    color: #0073e6; 
+  }
   
