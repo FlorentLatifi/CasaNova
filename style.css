@@ -52,7 +52,7 @@ body {
 }
 .header {
   height: 60vh;
-  background-image: url("");
+  background-image: url('fotot/shtepi_363-1536x861.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
