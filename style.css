@@ -52,14 +52,14 @@ body {
 }
 .header {
   height: 60vh;
-  background-image: url('fotot/shtepi_363-1536x861.jpg');
+  background-image: url('fotot/pexels-pixabay-259588.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #bb1313;
+  color: #fffafa;
   text-align: center;
   padding: 20px;
 }
