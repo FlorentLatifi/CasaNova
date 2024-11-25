@@ -16,8 +16,6 @@
       <nav class="navbar">
         <ul class="navbar-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="#header-buy ">Buy</a></li>
-          <li><a href="#header-buy">Rent</a></li>
           <li><a href="contact.html">Contact Us</a></li>
           <li><a href="about.html">About Us</a></li>
         </ul>
@@ -35,6 +33,24 @@
         <h1>Buy Your Dream Home</h1>
         <p>Find the perfect house for you and your family.</p>
       </section>
+
+      <!-- Hidden Login Modal -->
+      <div class="login-container hidden">
+        <h1>Login</h1>
+        <form action="" method="get" class="login-form">
+          <div class="form-group">
+            <input type="text" placeholder="Username" required />
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Password" required />
+          </div>
+          <button type="submit" class="submit-btn">Login</button>
+        </form>
+        <p class="signup-link">
+          Don't have an account? <a href="signup.html">Sign up here</a>.
+        </p>
+        <button id="close-login" class="close-btn">X</button>
+      </div>
 
       <!-- House Listings Section -->
       <section class="house-listings">
@@ -115,7 +131,7 @@
           <p>🏠 120 m² | 🛏️ 2 Bedrooms | 🛁 2 Bathrooms</p>
           <p>🌟 Features: Balcony with a city view, gym access</p>
           <p class="price">$1,800/month</p>
-          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+          <button class="buy-btn" onclick="handleRent()">Rent Now</button>
         </div>
       </div>
 
@@ -131,7 +147,7 @@
           <p>🏠 150 m² | 🛏️ 3 Bedrooms | 🛁 2 Bathrooms</p>
           <p>🌟 Features: Large backyard, pet-friendly</p>
           <p class="price">$2,500/month</p>
-          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+          <button class="buy-btn" onclick="handleRent()">Rent Now</button>
         </div>
       </div>
 
@@ -146,7 +162,7 @@
           <p>🏠 90 m² | 🛏️ 1 Bedroom | 🛁 1 Bathroom</p>
           <p>🌟 Features: Pool access, security, and rooftop lounge</p>
           <p class="price">$1,200/month</p>
-          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+          <button class="buy-btn" onclick="handleRent()">Rent Now</button>
         </div>
       </div>
 
@@ -162,7 +178,7 @@
           <p>🏠 110 m² | 🛏️ 2 Bedrooms | 🛁 1 Bathroom</p>
           <p>🌟 Features: Quiet countryside, large garden</p>
           <p class="price">$900/month</p>
-          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+          <button class="buy-btn" onclick="handleRent()">Rent Now</button>
         </div>
       </div>
     </section>
@@ -175,17 +191,28 @@
 
     <!-- JavaScript -->
     <script>
-      function handleBuy() {
-        document.getElementById("login-modal").style.display = "block";
-      }
+      // Get the modal and the close button
+      const modal = document.querySelector(".login-container");
+      const closeBtn = document.querySelector("#close-login");
 
-      function closeModal() {
-        document.getElementById("login-modal").style.display = "none";
-      }
+      // Add event listener to all buttons with the class 'open-login-btn'
+      document.querySelectorAll(".buy-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          modal.classList.remove("hidden"); // Show the modal
+        });
+      });
 
-      function redirectTo(page) {
-        window.location.href = page;
-      }
+      // Close the modal when the close button (X) is clicked
+      closeBtn.addEventListener("click", () => {
+        modal.classList.add("hidden"); // Hide the modal
+      });
+
+      // Optional: Close the modal when clicking outside the modal
+      window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          modal.classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>
