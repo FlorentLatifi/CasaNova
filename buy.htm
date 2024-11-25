@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Your Dream Home</title>
+    <!-- Ensure this path matches the location of your CSS file -->
+    <link rel="stylesheet" href="buy.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header" id="header-buy">
+      <div class="header-logo">
+        <img src="fotot/logo.png" alt="CasaNova Logo" />
+      </div>
+      <nav class="navbar">
+        <ul class="navbar-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#header-buy ">Buy</a></li>
+          <li><a href="#header-buy">Rent</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+        <div class="navbar-login">
+          <a href="login.html" class="btn">Login</a>
+          <a href="signup.html" class="btn">Sign Up</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Buy Your Dream Home</h1>
+        <p>Find the perfect house for you and your family.</p>
+      </section>
+
+      <!-- House Listings Section -->
+      <section class="house-listings">
+        <!-- House 1 -->
+        <div class="house">
+          <img
+            src="fotot/vecteezy_modern-architectural-home-with-pool-at-dusk-in-tranquil-setting_48833439.jpeg"
+            alt="Modern Villa"
+            class="house-img"
+          />
+          <div class="house-details">
+            <h2>Modern Villa</h2>
+            <p>🏠 250 m² | 🛏️ 4 Bedrooms | 🛁 3 Bathrooms</p>
+            <p>🌟 Features: Private pool, garden, and garage</p>
+            <p class="price">$350,000</p>
+            <button class="buy-btn" onclick="handleBuy()">Buy Now</button>
+          </div>
+        </div>
+
+        <!-- House 2 -->
+        <div class="house">
+          <img
+            src="fotot/shtepi_363-1536x861.jpg"
+            alt="Family House"
+            class="house-img"
+          />
+          <div class="house-details">
+            <h2>Family House</h2>
+            <p>🏠 180 m² | 🛏️ 3 Bedrooms | 🛁 2 Bathrooms</p>
+            <p>🌟 Features: Spacious living room and backyard</p>
+            <p class="price">$250,000</p>
+            <button class="buy-btn" onclick="handleBuy()">Buy Now</button>
+          </div>
+        </div>
+
+        <div class="house">
+          <img
+            src="fotot/cozy-apartment-living-room.jpg"
+            alt="Family House"
+            class="house-img"
+          />
+          <div class="house-details">
+            <h2>Cozy Apartment</h2>
+            <p>🏠 200 m² | 🛏️ 3 Bedrooms | 🛁 2 Bathrooms</p>
+            <p>🌟 Features: Comfortable Apartment</p>
+            <p class="price">$350,000</p>
+            <button class="buy-btn" onclick="handleBuy()">Buy Now</button>
+          </div>
+        </div>
+
+        <div class="house">
+          <img
+            src="fotot/bd1025af-e29c-4fcf-b409-16446a83f607-dubai1-sothebys.jpg"
+            alt="Penthouse"
+            class="house-img"
+          />
+          <div class="house-details">
+            <h2>Luxury Penthouse</h2>
+            <p>🏠 300 m² | 🛏️ 3 Bedrooms | 🛁 3 Bathrooms</p>
+            <p>🌟 Features: Spacious living room and personal gym</p>
+            <p class="price">$550,000</p>
+            <button class="buy-btn" onclick="handleBuy()">Buy Now</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <h2 style="text-align: center; padding-top: 3em">Rent a house</h2>
+    <section class="rental-listings">
+      <!-- Rental 1 -->
+      <div class="rental">
+        <img
+          src="fotot/DALL·E-2023-11-13-16.50.55-Wide-angle-photo-of-a-modern-small-apartment-living-room-in-landscape-perspective.-The-design-maximizes-space-with-multi-functional-furniture-like-a-s-1024x585.png"
+          alt="Luxury Apartment with a stunning view"
+          class="rental-img"
+        />
+        <div class="rental-details">
+          <h2>Luxury Apartment</h2>
+          <p>🏠 120 m² | 🛏️ 2 Bedrooms | 🛁 2 Bathrooms</p>
+          <p>🌟 Features: Balcony with a city view, gym access</p>
+          <p class="price">$1,800/month</p>
+          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+        </div>
+      </div>
+
+      <!-- Rental 2 -->
+      <div class="rental">
+        <img
+          src="fotot/Maly-tripodlazni-dum-s-cihelnym-obkladem-a-anglickym-nadechem-Hradec-Kralove-01___media_library_original_1567_881.jpg"
+          alt="Cozy Family Home with a backyard"
+          class="rental-img"
+        />
+        <div class="rental-details">
+          <h2>Cozy Family Home</h2>
+          <p>🏠 150 m² | 🛏️ 3 Bedrooms | 🛁 2 Bathrooms</p>
+          <p>🌟 Features: Large backyard, pet-friendly</p>
+          <p class="price">$2,500/month</p>
+          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+        </div>
+      </div>
+
+      <div class="rental">
+        <img
+          src="fotot/Combining-textures-like-velvet-leather-and-metallic-accents-can-add-depth-and-visual-interest-to-a-modern-condo-living-room-design.jpg"
+          class="rental-img"
+          style="height: 70vh"
+        />
+        <div class="rental-details">
+          <h2>Modern Condo</h2>
+          <p>🏠 90 m² | 🛏️ 1 Bedroom | 🛁 1 Bathroom</p>
+          <p>🌟 Features: Pool access, security, and rooftop lounge</p>
+          <p class="price">$1,200/month</p>
+          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+        </div>
+      </div>
+
+      <!-- Rental 4 -->
+      <div class="rental">
+        <img
+          src="fotot/2270901_cainc0259_1-2000-36b6699219454ee298de1d4565f1ab7d.jpg"
+          alt="Peaceful Rural Cottage"
+          class="rental-img"
+        />
+        <div class="rental-details">
+          <h2>Rural Cottage</h2>
+          <p>🏠 110 m² | 🛏️ 2 Bedrooms | 🛁 1 Bathroom</p>
+          <p>🌟 Features: Quiet countryside, large garden</p>
+          <p class="price">$900/month</p>
+          <button class="rent-btn" onclick="handleRent()">Rent Now</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CasaNova. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      function handleBuy() {
+        document.getElementById("login-modal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("login-modal").style.display = "none";
+      }
+
+      function redirectTo(page) {
+        window.location.href = page;
+      }
+    </script>
+  </body>
+</html>
