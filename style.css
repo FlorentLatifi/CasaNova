@@ -14,45 +14,60 @@ body {
   background-color: #f4f4f4;
   color: #333;
 }
-
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  padding: 10px 20px;
+  background-color: white;
+  padding: 0px 30px;
   border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
 }
 
+/* Logo styling */
 .nav-logo img {
-  height: 40px;
+  height: 4rem; /* Larger logo size */
   width: auto;
+  object-fit: contain;
+}
+
+/* Navigation menu styling */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Spacing between menu items */
 }
 
 .nav-list ul {
   display: flex;
   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list ul li {
+  margin: 0;
 }
 
 .nav-list ul li a {
   text-decoration: none;
-  color: #333;
+  color: #333; /* Neutral color */
+  font-size: 1.1rem; /* Slightly larger text */
   font-weight: 500;
+  padding: 5px 10px; /* Add padding for clickability */
+  transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
-.nav-list ul li {
-  margin: 0 15px;
-}
+/* Hover effects for links */
 .nav-list ul li a:hover {
-  color: #0073e6;
+  color: #0073e6; /* Highlight color */
+  border-bottom: 2px solid #0073e6; /* Underline on hover */
 }
-.nav-logo {
-  height: 10px;
-  width: 10px;
-}
+
 .header {
   height: 60vh;
-  background-image: url('fotot/vecteezy_modern-architectural-home-with-pool-at-dusk-in-tranquil-setting_48833439.jpeg');
+  background-image: url("fotot/k-lesu-celem-k-mestu-zady-1___media_library_original_1567_881.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -74,7 +89,7 @@ body {
 .header-list ul {
   display: flex;
   list-style: none;
-  padding: 0;
+  padding: 1.5em;
 }
 
 .header-list ul li {
@@ -85,4 +100,202 @@ body {
   text-decoration: none;
   color: #fff;
   font-weight: 400;
+}
+
+.header h3 {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+.header .btn {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.header .btn:hover {
+  background-color: #ffa500;
+}
+
+/* About Section */
+.about-section {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.about-section h2 {
+  color: #0074d9;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Amenities Section */
+.amenities-section {
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.amenities-section h2 {
+  color: #0074d9;
+  margin-bottom: 20px;
+}
+
+.amenities-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.amenities-section ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.photo-gallery h2 {
+  color: #0074d9;
+  margin-bottom: 20px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.photo-grid div {
+  text-align: center;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.photo-grid h3 {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.testimonials h2 {
+  color: #0074d9;
+  margin-bottom: 20px;
+}
+
+.testimonial {
+  margin-bottom: 20px;
+}
+
+.testimonial p {
+  font-style: italic;
+  color: #555;
+}
+
+.testimonial h4 {
+  margin-top: 10px;
+  color: #0074d9;
+  font-weight: bold;
+}
+
+/* FAQ Section */
+.faq {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.faq h2 {
+  color: #0074d9;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.faq h4 {
+  margin-top: 20px;
+  color: #333;
+}
+
+.faq p {
+  color: #555;
+}
+
+/* Contact Section */
+.contact {
+  padding: 40px 20px;
+  background-color: #0074d9;
+  color: white;
+  text-align: center;
+}
+
+.contact h2 {
+  margin-bottom: 20px;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact input,
+.contact textarea {
+  width: 90%;
+  max-width: 500px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.contact button {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  color: #333;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+  background-color: #ffa500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-list ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
 }
