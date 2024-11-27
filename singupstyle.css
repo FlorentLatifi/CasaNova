@@ -80,15 +80,18 @@ body {
 form {
     margin-bottom: 20px;
 }
-
+input[type="emri"],
+input[type="mbiemri"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="confirm password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 
 .password-input {
     position: relative;
