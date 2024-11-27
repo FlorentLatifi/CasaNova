@@ -64,68 +64,78 @@ body {
     font-weight: bold;
 }
 
-/* Right Section */
 .signup-section {
     flex: 1;
-    padding: 30px;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-
-.signup-section h2 {
+    padding: 40px;
+  }
+  
+  .signup-section h2 {
+    font-size: 24px;
     margin-bottom: 20px;
-    font-size: 22px;
-}
-
-form {
+  }
+  
+  .input-group {
+    position: relative;
     margin-bottom: 20px;
-}
-input[type="emri"],
-input[type="mbiemri"],
-input[type="email"],
-input[type="password"],
-input[type="confirm password"] {
+  }
+  
+  .input-group input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 10px 40px 10px 10px;
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-
-.password-input {
-    position: relative;
-}
-
-.password-input .show-password {
+  }
+  
+  .password-toggle {
     position: absolute;
+    top: 50%;
     right: 10px;
-    top: 10px;
+    transform: translateY(-50%);
     cursor: pointer;
-}
-
-.signup-btn {
+    font-size: 16px;
+  }
+  
+  .signup-btn {
     width: 100%;
     padding: 10px;
-    background-color: #000;
+    font-size: 16px;
     color: #fff;
+    background: #000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.signup-btn:hover {
-    background-color: #333;
-}
-
-.divider {
+  }
+  
+  .login-link {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .login-link a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
     margin: 20px 0;
+  }
+  
+  .divider span {
+    margin: 0 10px;
     font-size: 14px;
-    color: #aaa;
-}
-
+    color: #666;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ccc;
+  }
 .social-btn {
     width: 100%;
     padding: 10px;
@@ -136,20 +146,25 @@ input[type="confirm password"] {
     cursor: pointer;
 }
 
-.google-btn {
-    background-color: #fff;
-}
-
-.facebook-btn {
-    background-color: #4267b2;
-    color: #fff;
-}
-
-.apple-btn {
-    background-color: #000;
-    color: #fff;
-}
-
-.social-btn:hover {
-    opacity: 0.9;
-}
+.social-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background: #fff;
+  }
+  
+  .social-btn.google {
+    border-color: #DB4437;
+  }
+  
+  .social-btn.facebook {
+    border-color: #4267B2;
+  }
+  
+  .social-btn.apple {
+    border-color: #000;
+  }
