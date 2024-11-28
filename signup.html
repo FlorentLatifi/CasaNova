@@ -32,12 +32,18 @@
                 </div>
             </div>
             <div class="real-estate-link">
-                <p>Are you a real estate professional? <a href="#">Log in here</a></p>
+                <p>Are you a real estate professional? <a href="login.html">Log in here</a></p>
             </div>
         </div>
         <div class="signup-section">
             <h2>Sign up</h2>
             <form>
+                <div class="input-group">
+                    <input type="emri" placeholder="Emri*" required>
+                  </div>
+                  <div class="input-group">
+                    <input type="mbiemri" placeholder="Mbiemri*" required>
+                  </div>
                 <div class="input-group">
                     <input type="email" placeholder="Email address*" required>
                   </div>
@@ -45,17 +51,26 @@
                     <input type="password" id="password" placeholder="Create password*" required>
                     <span id="togglePassword" class="password-toggle">👁</span>
                   </div>
+                  <div class="input-group">
+                    <input type="password" id="cpassword" placeholder="Confirm password*" required>
+                    <span id="ctogglePassword" class="cpassword-toggle">👁</span>
+                  </div>
                   <button type="submit" class="signup-btn">Sign up</button>
                 </form>
-                <p class="login-link">Already have an account? <a href="#">Log in</a></p>
+                <p class="login-link">Already have an account? <a href="login.html">Log in</a></p>
                 <div class="divider">
                   <span>OR</span>
            
                 </div>
-                <button class="social-btn google">Continue with Google</button>
-                <button class="social-btn facebook">Continue with Facebook</button>
-                <button class="social-btn apple">Continue with Apple</button>
-              </div>
+                <button class="social-btn google">
+                    <img src="fotot/googlelogo.png" alt="Google Logo"> Continue with Google
+                  </button>
+                  <button class="social-btn facebook">
+                    <img src="fotot/facebooklogo.png" alt="Facebook Logo"> Continue with Facebook
+                  </button>
+                  <button class="social-btn apple">
+                    <img src="fotot/appleologo.png" alt="Apple Logo"> Continue with Apple
+                  </button>
             </div>
             <script src="singupscript.js"></script> 
 </body>
