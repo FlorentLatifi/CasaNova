@@ -480,6 +480,30 @@ body {
   color: #777;
 }
 
+/* Styling for the social section */
+.footer-section h4 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Space between icons */
+}
+
+.social-icon {
+  width: 30px; /* Uniform size for all icons */
+  height: 30px; /* Keep the same height */
+  object-fit: contain; /* Ensures images scale properly */
+
+}
+
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer-wrapper {
