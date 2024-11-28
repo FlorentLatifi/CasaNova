@@ -372,6 +372,11 @@ body {
   font-weight: bold;
 }
 
+.leart {
+  width: 40px;
+  height: 40px;
+}
+
 /* FAQ Section */
 .faq {
   line-height: 1.5;
