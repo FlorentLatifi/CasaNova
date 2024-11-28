@@ -87,7 +87,8 @@ body {
     border-radius: 5px;
   }
   
-  .password-toggle {
+  .password-toggle,
+  .cpassword-toggle {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -95,6 +96,7 @@ body {
     cursor: pointer;
     font-size: 16px;
   }
+  
   
   .signup-btn {
     width: 100%;
@@ -136,17 +138,10 @@ body {
     height: 1px;
     background: #ccc;
   }
-.social-btn {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.social-btn {
+  .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -155,6 +150,27 @@ body {
     margin-bottom: 10px;
     cursor: pointer;
     background: #fff;
+    text-align: center;
+  }
+  
+  
+  .social-btn.google img {
+    width: 20px; /* Adjust size based on the logo dimensions */
+    height: 20px;
+    margin-right: 10px; /* Adds space between the logo and text */
+  }
+  .social-btn.social-btn.facebook img {
+    width: 20px; /* Adjust size based on the logo dimensions */
+    height: 16px;
+    margin-right: 10px; /* Adds space between the logo and text */
+  }
+  .social-btn.social-btn.apple img {
+    width: 20px; /* Adjust size based on the logo dimensions */
+    height: 20px;
+    margin-right: 10px; /* Adds space between the logo and text */
+  }
+  .social-btn span {
+    flex: 1; /* Ensures the text takes up available space */
   }
   
   .social-btn.google {
@@ -168,3 +184,4 @@ body {
   .social-btn.apple {
     border-color: #000;
   }
+  
