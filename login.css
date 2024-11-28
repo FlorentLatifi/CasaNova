@@ -97,13 +97,13 @@
     border-radius: 5px;
   }
   
-  .password-toggle {
+  .lpassword-toggle {
     position: absolute;
     top: 50%;
-    right: 15px;
+    right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
   }
   
   .forgot-password {
@@ -176,8 +176,19 @@
     margin-bottom: 15px;
   }
   
-  .social-btn img {
+  .social-btn.social-btn.google img {
     width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  .social-btn.social-btn.social-btn.facebook img {
+    width: 20px;
+    height: 16px;
+    margin-right: 10px;
+  }
+  .social-btn.social-btn.social-btn.apple img {
+    width: 15px;
+    height: 16px;
     margin-right: 10px;
   }
   
