@@ -1,55 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-    <link rel="stylesheet" href="login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class="container">
-        <div class="info-section">
-            <h1>Search better with an account</h1>
-            <div class="feature">
-                <img src="fotot/singupicon1.PNG" alt="Save listings icon" class="icon">
-                <div>
-                    <h3>Save listings you love</h3>
-                    <p>Keep an eye on your favorite homes.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <img src="fotot/singupicon2.PNG" alt="Save searches icon" class="icon">
-                <div>
-                    <h3>Save your searches</h3>
-                    <p>Get alerts for homes that are perfect for you.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <img src="fotot/singupicon3.PNG" alt="Search from anywhere icon" class="icon">
-                <div>
-                    <h3>Search from anywhere</h3>
-                    <p>Access your search across all your devices.</p>
-                </div>
-            </div>
-            <div class="real-estate-link">
-                <p>Are you a real estate professional? <a href="#">Log in here</a></p>
-            </div>
+  <div class="container">
+    <!-- Left Section -->
+    <div class="welcome-section">
+      <h1>Welcome back</h1>
+      <p>Log in to see the latest on Casanova.com.</p>
+      <img src="placeholder-image.png" alt="Illustration">
+    </div>
+
+    <!-- Right Section -->
+    <div class="login-section">
+      <h2>Log in</h2>
+      <form>
+        <!-- Email Field -->
+        <div class="input-group">
+          <input type="email" placeholder="Email address*" required>
         </div>
-        <div class="signup-section">
-            <h2>Sign up</h2>
-            <form>
-                <input type="email" placeholder="Email address*" required>
-                <div class="password-input">
-                    <input type="password" placeholder="Create password*" required>
-                    <span class="show-password">👁</span>
-                </div>
-                <button type="submit" class="signup-btn">Sign up</button>
-            </form>
-            <p>Already have an account? <a href="#">Log in</a></p>
-            <div class="divider">OR</div>
-            <button class="social-btn google-btn">Continue with Google</button>
-            <button class="social-btn facebook-btn">Continue with Facebook</button>
-            <button class="social-btn apple-btn">Continue with Apple</button>
-        </div>  
+        <!-- Password Field -->
+        <div class="input-group">
+          <input type="password" id="password" placeholder="Password*" required>
+          <span id="togglePassword" class="password-toggle">👁</span>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+        <button type="submit" class="login-btn">Log in</button>
+      </form>
+      <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+      <div class="divider">
+        <span>OR</span>
+      </div>
+      <!-- Social Media Login Buttons -->
+      <button class="social-btn google">Continue with Google </button>
+      <button class="social-btn facebook">Continue with Facebook</button>
+      <button class="social-btn apple">Continue with Apple</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
