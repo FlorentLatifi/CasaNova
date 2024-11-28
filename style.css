@@ -450,6 +450,7 @@ body {
 
 .footer-section ul li {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .footer-section ul li a {
@@ -505,8 +506,25 @@ body {
   object-fit: contain; /* Ensures images scale properly */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 770px) {
+  .main {
+    height: auto;
+  }
+  .photo-gallery {
+    height: auto;
+  }
+  .house-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap in multiple rows */
+    gap: 15px; /* Add space between items */
+    height: auto; /* Set the height to auto, allowing it to grow based on content */
+  }
+
+  .photo-item {
+    flex: 1 1 48%; /* Each item will take up 48% of the container width, allowing two items per row */
+    max-width: 48%; /* Ensure the items do not exceed 48% of the container */
+  }
+
   .footer-wrapper {
     flex-direction: column;
     align-items: center;
@@ -518,5 +536,90 @@ body {
 
   .social-links {
     justify-content: center;
+  }
+}
+
+/* Responsive design for screen width 550px and below */
+@media (max-width: 550px) {
+  /* Adjust navbar layout */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .nav-logo {
+    margin-bottom: 10px;
+    align-self: center;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .nav-list ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-list ul li {
+    text-align: left;
+  }
+
+  /* Collapse header-list into a dropdown menu */
+  .header-list ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .h3-main {
+    padding-top: 1.5em;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .header h3 {
+    font-size: 1rem;
+  }
+
+  /* Handle overlapping text issues */
+  .main-content {
+    margin: 5em 0em;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .header {
+    height: auto;
+    padding: 20px;
+  }
+
+  /* Adjust house gallery cards */
+  .photo-item {
+    flex: 1 1 100%; /* Ensure each item takes full width on smaller screens */
+    max-width: 100%; /* Prevent items from exceeding the width of their container */
+  }
+
+  .house-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically instead of horizontally */
+    gap: 15px; /* Add space between the items */
+  }
+
+  /* General adjustments for smaller screens */
+  .amenities-section ul {
+    padding: 0;
+    list-style-position: inside;
+  }
+
+  .testimonial h4 img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-wrapper {
+    flex-direction: column;
+    gap: 20px;
   }
 }
