@@ -10,6 +10,21 @@ body {
     height: 100vh;
 }
 
+#con{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+.logo-nav{
+  background-color: white;
+}
+
+.logo-login{
+  width: 20%;
+  height: auto;
+}
+
 .container {
     display: flex;
     max-width: 1000px;

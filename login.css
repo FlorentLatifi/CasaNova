@@ -13,6 +13,20 @@
     height: 100vh;
     background-color: #f9f9f9;
   }
+  #con{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+  .logo-nav{
+    background-color: white;
+  }
+
+  .logo-login{
+    width: 20%;
+    height: auto;
+  }
   
   .container {
     display: flex;
