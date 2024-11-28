@@ -479,6 +479,11 @@ body {
   color: #777;
 }
 
+.leart {
+  width: 40px;
+  height: auto;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer-wrapper {
