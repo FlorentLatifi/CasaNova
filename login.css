@@ -174,6 +174,10 @@
     cursor: pointer;
     width: 100%;
     margin-bottom: 15px;
+    
+  }
+  .remove-underline{
+    text-decoration: none;
   }
   
   .social-btn.social-btn.google img {
