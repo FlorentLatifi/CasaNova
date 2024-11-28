@@ -85,7 +85,7 @@ body {
   font-weight: 600;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: white
+  color: white;
 }
 
 .header-list ul {
@@ -480,13 +480,6 @@ body {
   color: #777;
 }
 
-<<<<<<< HEAD
-.leart {
-  width: 40px;
-  height: auto;
-}
-
-=======
 /* Styling for the social section */
 .footer-section h4 {
   font-size: 20px;
@@ -505,13 +498,8 @@ body {
   width: 30px; /* Uniform size for all icons */
   height: 30px; /* Keep the same height */
   object-fit: contain; /* Ensures images scale properly */
-
 }
 
-
-
-
->>>>>>> 3a64bb6d6b407094e2e59816694601dd6f988d7b
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer-wrapper {
