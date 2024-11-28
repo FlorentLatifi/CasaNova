@@ -20,3 +20,4 @@ document.getElementById("togglePassword").addEventListener("click", function () 
       this.textContent = "👁"; // Change icon back to show password
     }
   });
+ 
