@@ -16,14 +16,7 @@ body {
     flex-direction: column; /* Stack elements (e.g., navbar, container) vertically */
     min-height: 100vh; /* Ensure the full height of the viewport */
   }
-  .main-wrapper {
-    display: flex; /* Enable flexbox inside the wrapper */
-    justify-content: center; /* Center containers horizontally */
-    align-items: center; /* Center containers vertically */
-    flex-grow: 1; /* Take up available vertical space */
-    gap: 20px; /* Add space between multiple containers */
-    padding: 20px; /* Add some space around the containers */
-  }
+  
   
 
 .nav {
