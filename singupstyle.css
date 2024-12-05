@@ -1,37 +1,49 @@
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=Montserrat:wght@300;400;500;600&display=swap");
+* {
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-#con{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+    box-sizing: border-box;
+  }
+body {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex; /* Enable flexbox for alignment */
+    flex-direction: column; /* Stack elements (e.g., navbar, container) vertically */
+    min-height: 100vh; /* Ensure the full height of the viewport */
+  }
   
-}
-.logo-nav{
-  background-color: white;
-}
+  
 
-.logo-login{
-  width: 20%;
-  height: auto;
-}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0px 30px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+  }
+  
+  .nav-logo img {
+    height: 4rem;
+    width: auto;
+    object-fit: contain;
+  }
 
 .container {
     display: flex;
-    max-width: 1000px;
+    max-width: 2000px;
     background: #ffffff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
+    flex-grow: 0;
 }
 
 /* Left Section */
