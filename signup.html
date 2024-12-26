@@ -43,26 +43,35 @@
         </div>
         <div class="signup-section">
             <h2>Sign up</h2>
-            <form>
+           
+              <form action="Register.php" method="POST">
                 <div class="input-group">
-                    <input type="emri" placeholder="Emri*" required>
-                  </div>
-                  <div class="input-group">
-                    <input type="mbiemri" placeholder="Mbiemri*" required>
-                  </div>
+                    <input type="text" name="emri" placeholder="Emri*" required>
+                </div>
                 <div class="input-group">
-                    <input type="email" placeholder="Email address*" required>
-                  </div>
-                  <div class="input-group">
-                    <input type="password" id="password" placeholder="Create password*" required>
+                    <input type="text" name="mbiemri" placeholder="Mbiemri*" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email address*" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" id="password" placeholder="Create password*" required>
                     <span id="togglePassword" class="password-toggle">👁</span>
-                  </div>
-                  <div class="input-group">
-                    <input type="password" id="cpassword" placeholder="Confirm password*" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="cpassword" id="cpassword" placeholder="Confirm password*" required>
                     <span id="ctogglePassword" class="cpassword-toggle">👁</span>
-                  </div>
-                  <button type="submit" class="signup-btn">Sign up</button>
-                </form>
+                </div>
+                <div class="input-group">
+                  <label for="role">Choose role:</label>
+                  <select name="role" id="role">
+                      <option value="USER">USER</option>
+                      <option value="ADMIN">ADMIN</option>
+                  </select>
+              </div>
+            
+                <button type="submit" class="signup-btn">Sign up</button>
+              </form>
                 <p class="login-link">Already have an account? <a href="login.html">Log in</a></p>
                 <div class="divider">
                   <span>OR</span>
