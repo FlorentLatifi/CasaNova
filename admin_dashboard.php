@@ -18,8 +18,7 @@
           <li><a href="buy.htm">Sell</a></li>
           <li><a href="buy.htm">Rent</a></li>
           <li><a href="index.html">My Home</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="signup.html">Sign Up</a></li>
+          <li><a href="index.html">Dashboard</a></li>
         </ul>
       </div>
     </div>

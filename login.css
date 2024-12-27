@@ -29,26 +29,43 @@
     width: auto;
     object-fit: contain;
   }
-  
+  .container {
+  display: flex;
+  max-width: 1400px;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  gap: 20px;
+}
+
+
+
+
+
   .container {
     display: flex;
-    max-width: 1200px;
+    max-width: 1500px;
     width: 100%;
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    gap: 10px;
   }
   
   /* Left Section */
   .welcome-section {
-    flex: 1;
+    flex: 2;
     background-color: #f9f9f9;
     padding: 50px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-right: 20px;
   }
   
   .welcome-section h1 {
@@ -86,11 +103,13 @@
   
   /* Right Section */
   .login-section {
-    flex: 1;
+    flex: 2;
     padding: 50px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-right: 20px;
   }
   
   .login-section h2 {
@@ -189,6 +208,8 @@
     background-color: #fff;
     cursor: pointer;
     width: 100%;
+    width: 400px;
+    height: 50px;
     margin-bottom: 15px;
     
   }
