@@ -1,59 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lidhja me skedarin CSS -->
+    <link rel="stylesheet" href="login.css"> <!-- Lidhja me skedarin CSS specifik për login -->
 </head>
 <body>
-  <div class="nav">
-      <div class="nav-logo">
-        <img src="./fotot/logo.png" alt="Logo" />
-      </div>
-  </div>
-  <hr>
-  <div class="container">
-    <!-- Left Section -->
-    <div class="welcome-section">
-      <h1>Welcome back</h1>
-      <p>Log in to see the latest on Casanova.com.</p>
-      <img src="fotot/login.jpg" alt="Illustration">
-      <div class="professional-login">
-      </div>
+    <div class="nav">
+        <div class="nav-logo">
+            <img src="./fotot/logo.png" alt="Logo" />
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="welcome-section">
+            <h1>Welcome back</h1>
+            <p>Log in to see the latest on Casanova.com.</p>
+            <img src="fotot/login.jpg" alt="Illustration">
+            <div class="professional-login">
+                <!-- Mund të shtoni përmbajtje të tjera këtu -->
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="login-section">
+            <h2>Log in</h2>
+            <form action="login.php" method="POST"> <!-- Sigurohuni që action të jetë i saktë -->
+                <!-- Fusha e Email-it -->
+                <div class="input-group">
+                    <label for="email">Email address*</label>
+                    <input type="email" name="email" id="email" placeholder="Email address*" required>
+                </div>
+                
+                <!-- Fusha e Fjalëkalimit -->
+                <div class="input-group">
+                    <label for="lpassword">Password*</label>
+                    <input type="password" name="password" id="lpassword" placeholder="Password*" required>
+                    <span id="ltogglePassword" class="lpassword-toggle" onclick="togglePasswordVisibility()">👁</span>
+                </div>
+                
+                <a href="#" class="forgot-password">Forgot password?</a>
+                <button type="submit" class="login-btn">Log in</button>
+            </form>
+            <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            <!-- Butonat e Login-it me Rrjetet Sociale -->
+            <a href="https://myaccount.google.com/" class="remove-underline">
+                <button class="social-btn google"><img src="fotot/googlelogo.png" alt="">Continue with Google</button>
+            </a>
+            <a href="https://www.facebook.com/" class="remove-underline">
+                <button class="social-btn facebook"><img src="fotot/facebooklogo.png" alt="">Continue with Facebook</button>
+            </a>
+            <a href="https://www.apple.com/" class="remove-underline">
+                <button class="social-btn apple"><img src="fotot/apple logo.jfif" alt="">Continue with Apple</button>
+            </a>
+        </div>
     </div>
 
-    <!-- Right Section -->
-    <div class="login-section">
-      <h2>Log in</h2>
-      <form>
-        <!-- Email Field -->
-        <div class="input-group">
-          <input type="email" placeholder="Email address*" required>
-        </div>
-        <!-- Password Field -->
-        <div class="input-group">
-          <input type="password" id="lpassword" placeholder="Password*" required>
-          <span id="ltogglePassword" class="lpassword-toggle">👁</span>
-        </div>
-        <a href="#" class="forgot-password">Forgot password?</a>
-        <button type="submit" class="login-btn">Log in</button>
-      </form>
-      <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
-      <div class="divider">
-        <span>OR</span>
-      </div>
-      <!-- Social Media Login Buttons -->
-     <a href="https://myaccount.google.com/" class="remove-underline"><button class="social-btn google"><img src="fotot/googlelogo.png" alt="">Continue with Google </button></a> 
-      <a href="https://www.facebook.com/" class="remove-underline"><button class="social-btn facebook"><img src="fotot/facebooklogo.png" alt=""> Continue with Facebook</button></a>
-      <a href="https://www.apple.com/" class="remove-underline"><button class="social-btn apple"><img src="fotot/apple logo.jfif" alt=""> Continue with Apple</button></a>
-    </div>
-  </div>
-    
-  </div>
-  
-  <script src="loginscript.js"></script>
-   
+    <script src='loginscript.js'></script>
 </body>
 </html>

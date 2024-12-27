@@ -46,9 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt === false) {
         die("Gabim gjatë regjistrimit: " . print_r(sqlsrv_errors(), true));
     } else {
-        echo "Përdoruesi është regjistruar me sukses!";
-        // Mund të shtoni një lidhje për të dërguar përdoruesin në faqen e login
-        echo "<br><a href='login.html'>Klikoni këtu për t'u loguar</a>";
+        header("Location: login.html");
+        exit(); // Sigurohuni që të ndaloni ekzekutimin e mëtejshëm
     }
 }
 
