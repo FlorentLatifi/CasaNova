@@ -24,40 +24,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Prepare and execute the SQL query to find the user
-    $sql = "SELECT password, role FROM users WHERE email = ?";
-    $params = [$email];
+
+    
+    // Query për të marrë password dhe role_id të përdoruesit
+    $sql = "SELECT u.password, r.name AS role_name 
+            FROM users u 
+            JOIN roles r ON u.role_id = r.id 
+            WHERE u.email = ?";
+    $params = array($email);
     $stmt = sqlsrv_query($conn, $sql, $params);
-
+    
     if ($stmt === false) {
-        die("Query failed: " . print_r(sqlsrv_errors(), true));
+        die(print_r(sqlsrv_errors(), true));
     }
-
-    // Check if the user exists
+    
+    // Kontrollo nëse përdoruesi ekziston
     $user = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
     if ($user) {
-        // Verify the provided password against the hashed password
+        // Verifiko fjalëkalimin e dhënë kundrejt atij të kriptuar
         if (password_verify($password, $user['password'])) {
-            // Set session variables
+            // Vendos variablat e sesionit
             $_SESSION['email'] = $email; // Store email in session
-            $_SESSION['role'] = $user['role']; // Store user role in session
-
-            // Redirect based on user role
-            if ($user['role'] === 'admin') {
+            $_SESSION['role'] = $user['role_name']; // Store role in session
+    
+            // Redirekto sipas rolit të përdoruesit
+            if ($user['role_name'] === 'SUPERADMIN') {
+                header("Location: superadmin_dashboard.php");
+                exit();
+            } elseif ($user['role_name'] === 'ADMIN') {
                 header("Location: admin_dashboard.php");
-                exit;
+                exit();
             } else {
                 header("Location: user_dashboard.php");
-                exit;
-            } 
-          }  else {
-            // Invalid password
+                exit();
+            }
+        } else {
+            // Fjalëkalimi i gabuar
             echo "<script>alert('Fjalëkalimi është i gabuar!');</script>";
         }
     } else {
-        // Email not found
+        // Email-i nuk u gjet
         echo "<script>alert('Email-i nuk ekziston!');</script>";
     }
+
 
     // Free statement and close the connection
     sqlsrv_free_stmt($stmt);
