@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $role = $_POST['role'];
+    $roleName = $_POST['role'];  // Kjo është emri i rolit (si USER, ADMIN, etj.)
 
     // Kontrolloni nëse fjalëkalimi dhe konfirmimi i fjalëkalimit përputhen
     if ($password != $cpassword) {
@@ -33,11 +33,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hashing fjalëkalimi për siguri
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+    // Gjeni role_id nga tabela roles bazuar në rolin (p.sh. USER, ADMIN)
+    $sqlRole = "SELECT id FROM roles WHERE name = ?";
+    $paramsRole = array($roleName);
+    $stmtRole = sqlsrv_query($conn, $sqlRole, $paramsRole);
+
+    if ($stmtRole === false) {
+        die("Gabim gjatë kërkimit të role_id: " . print_r(sqlsrv_errors(), true));
+    }
+
+    $role = sqlsrv_fetch_array($stmtRole, SQLSRV_FETCH_ASSOC);
+    
+    if ($role === false) {
+        die("Roli i zgjedhur nuk ekziston.");
+    }
+
+    // Përdorim role_id nga tabela roles
+    $roleId = $role['id'];
+
     // Parametrat për pyetjen SQL për regjistrimin e përdoruesit
-    $sql = "INSERT INTO users (emri, mbiemri, email, password, role) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (emri, mbiemri, email, password, role_id) VALUES (?, ?, ?, ?, ?)";
 
     // Parametrat për pyetjen
-    $params = array($emri, $mbiemri, $email, $hashedPassword, $role);
+    $params = array($emri, $mbiemri, $email, $hashedPassword, $roleId);
 
     // Ekzekuto pyetjen SQL
     $stmt = sqlsrv_query($conn, $sql, $params);
@@ -46,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt === false) {
         die("Gabim gjatë regjistrimit: " . print_r(sqlsrv_errors(), true));
     } else {
+        // Përdoruesi është regjistruar, drejtoje përdoruesin te faqja e login
         header("Location: login.html");
         exit(); // Sigurohuni që të ndaloni ekzekutimin e mëtejshëm
     }

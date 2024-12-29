@@ -49,8 +49,10 @@ ALTER TABLE users DROP CONSTRAINT fk_role;
 UPDATE users
 SET role_id = (SELECT id FROM roles WHERE name = users.role);
 
-select* 
-from roles
+select u.emri, u.mbiemri, u.email, r.name 
+from users u , roles r
+where u.role_id = r.id
+order by  u.emri, u.mbiemri, u.email, r.name 
 
 UPDATE users
 SET role_id = (SELECT id FROM roles WHERE name = 'SUPERADMIN')
@@ -58,3 +60,6 @@ WHERE email = 'diarcanhasi@hotmail.com';
 
 GRANT INSERT ON dbo.roles TO Diar;
 GRANT SELECT ON dbo.roles TO Diar;
+
+select*
+from users
