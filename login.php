@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($user['role_name'] === 'SUPERADMIN') {
                 header("Location: superadmin_dashboard.php");
                 exit();
-            } elseif ($user['role_name'] === 'ADMIN') {
+            } elseif ($user['role_name'] === 'admin') {
                 header("Location: admin_dashboard.php");
                 exit();
             } else {
