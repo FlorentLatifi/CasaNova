@@ -1,20 +1,5 @@
 <?php
-// Parametrat për lidhjen me SQL Server
-$serverName = "localhost";  // Ose IP adresën e serverit tuaj
-$connectionOptions = array(
-    "Database" => "Projekti",  // Emri i databazës që përdorni
-    "Uid" => "Diar",  // Përdoruesi për lidhjen me MSSQL
-    "PWD" => "Diar2005"   // Fjalëkalimi i përdoruesit
-);
-
-// Lidhja me SQL Server
-$conn = sqlsrv_connect($serverName, $connectionOptions);
-
-// Kontrolloni nëse lidhja ka dështuar
-if ($conn === false) {
-    die("Gabim në lidhjen me databazën: " . print_r(sqlsrv_errors(), true));
-}
-
+include 'db_connection.php';
 // Kontrolloni nëse formulari është dërguar me metodën POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Merrni të dhënat nga formulari

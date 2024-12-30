@@ -1,18 +1,7 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$connectionOptions = [
-    "Database" => "Projekti",
-    "UID" => "Diar", // Replace with your MSSQL username
-    "PWD" => "Diar2005", // Replace with your MSSQL password
-];
-
-// Establish connection to the MSSQL database
-$conn = sqlsrv_connect($servername, $connectionOptions);
-if ($conn === false) {
-    die("Connection failed: " . print_r(sqlsrv_errors(), true));
-}
+include 'db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if email and password are set

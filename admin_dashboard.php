@@ -18,7 +18,7 @@
           <li><a href="buy.htm">Sell</a></li>
           <li><a href="buy.htm">Rent</a></li>
           <li><a href="index.html">My Home</a></li>
-          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="">Dashboard</a></li>
         </ul>
       </div>
     </div>
