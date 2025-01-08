@@ -60,6 +60,7 @@ WHERE email = 'diarcanhasi@hotmail.com';
 
 GRANT INSERT ON dbo.roles TO Diar;
 GRANT SELECT ON dbo.roles TO Diar;
+GRANT DELETE ON dbo.users TO Diar;
 
 select*
 from users
