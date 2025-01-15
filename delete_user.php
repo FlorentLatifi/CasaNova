@@ -1,25 +1,28 @@
 <?php
-// Lidhja me databazën
-include 'db_connection.php'; // Sigurohu që të kesh një lidhje të saktë
+// Include the database connection
+include 'db_connection.php'; // Ensure you have a correct connection
 
-// Kontrollo nëse ID-ja është dërguar me metodën POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-    $user_id = $_POST['id'];
+// Check if ID is sent via POST method
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];
 
-    // Fshi përdoruesin nga baza e të dhënave
-    $sql = "DELETE FROM users WHERE id = ?";
-    $stmt = sqlsrv_prepare($conn, $sql, array($user_id));
+        // Prepare the SQL statement to prevent SQL injection
+        $sql = "DELETE FROM users WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
 
-    if (sqlsrv_execute($stmt)) {
-        // Redirekto te lista e përdoruesve
-        header("Location: dashboard.php");
-        exit();
+        // Execute the SQL query
+        if ($stmt->execute()) {
+            echo "User deleted successfully.";
+        } else {
+            die("Error deleting user: " . $stmt->error);
+        }
     } else {
-        echo "Error deleting user: " . print_r(sqlsrv_errors(), true);
+        die("User ID must be provided.");
     }
-} else {
-    echo "Invalid request.";
 }
 
-sqlsrv_close($conn);
+// Close the database connection
+$conn->close();
 ?>

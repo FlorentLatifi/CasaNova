@@ -6,59 +6,51 @@ include 'db_connection.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if email and password are set
     if (isset($_POST['email']) && isset($_POST['password'])) {
-        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $email = $_POST['email'];
         $password = $_POST['password'];
-    } else {
-        echo "<script>alert('Email or password is missing!');</script>";
-        exit;
-    }
 
+        // Prepare the SQL statement to prevent SQL injection
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    
-    // Query për të marrë password dhe role_id të përdoruesit
-    $sql = "SELECT u.password, r.name AS role_name 
-            FROM users u 
-            JOIN roles r ON u.role_id = r.id 
-            WHERE u.email = ?";
-    $params = array($email);
-    $stmt = sqlsrv_query($conn, $sql, $params);
-    
-    if ($stmt === false) {
-        die(print_r(sqlsrv_errors(), true));
-    }
-    
-    // Kontrollo nëse përdoruesi ekziston
-    $user = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
-    if ($user) {
-        // Verifiko fjalëkalimin e dhënë kundrejt atij të kriptuar
-        if (password_verify($password, $user['password'])) {
-            // Vendos variablat e sesionit
-            $_SESSION['email'] = $email; // Store email in session
-            $_SESSION['role'] = $user['role_name']; // Store role in session
-    
-            // Redirekto sipas rolit të përdoruesit
-            if ($user['role_name'] === 'SUPERADMIN') {
-                header("Location: superadmin_dashboard.php");
-                exit();
-            } elseif ($user['role_name'] === 'admin') {
-                header("Location: admin_dashboard.php");
+        if ($result->num_rows === 1) {
+            $user = $result->fetch_assoc();
+            // Verify the password
+            if (password_verify($password, $user['password'])) {
+                // Password is correct, set session variables
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['emri'];
+                $_SESSION['user_role'] = $user['role_id']; // Assuming role_id is stored in the users table
+
+                // Redirect based on user role
+                switch ($_SESSION['user_role']) {
+                    case 1: // Assuming 1 is for regular users
+                        header("Location: user_dashboard.php");
+                        break;
+                    case 2: // Assuming 2 is for admins
+                        header("Location: admin_dashboard.php");
+                        break;
+                    case 3: // Assuming 3 is for superadmins
+                        header("Location: superadmin_dashboard.php");
+                        break;
+                    default:
+                        die("Invalid user role.");
+                }
                 exit();
             } else {
-                header("Location: user_dashboard.php");
-                exit();
+                die("Invalid password.");
             }
         } else {
-            // Fjalëkalimi i gabuar
-            echo "<script>alert('Fjalëkalimi është i gabuar!');</script>";
+            die("No user found with that email.");
         }
     } else {
-        // Email-i nuk u gjet
-        echo "<script>alert('Email-i nuk ekziston!');</script>";
+        die("Email and password must be provided.");
     }
-
-
-    // Free statement and close the connection
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close($conn);
 }
+
+// Close the database connection
+$conn->close();
 ?>

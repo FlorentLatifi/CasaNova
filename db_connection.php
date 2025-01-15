@@ -1,17 +1,16 @@
 <?php
 // Parametrat për lidhjen me bazën e të dhënave
 $serverName = "localhost";  // Emri ose IP-ja e serverit
-$connectionOptions = array(
-    "Database" => "Projekti",  // Emri i databazës tuaj
-    "Uid" => "Diar",          // Përdoruesi i databazës
-    "PWD" => "Diar2005"       // Fjalëkalimi i databazës
-);
+$username = "Diar";         // Përdoruesi i databazës
+$password = "Diar2005";     // Fjalëkalimi i databazës
+$dbname = "Projekti";       // Emri i databazës tuaj
 
-// Krijimi i lidhjes me SQL Server
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+// Krijimi i lidhjes me MySQL/MariaDB
+$conn = new mysqli($serverName, $username, $password, $dbname);
 
 // Kontrolloni nëse lidhja është e suksesshme
-if ($conn === false) {
-    die("Gabim gjatë lidhjes me bazën e të dhënave: " . print_r(sqlsrv_errors(), true));
+if ($conn->connect_error) {
+    die("Gabim gjatë lidhjes me bazën e të dhënave: " . $conn->connect_error);
 }
+echo "Lidhja me bazën e të dhënave është bërë me sukses!";
 ?>

@@ -1,60 +1,52 @@
 <?php
 include 'db_connection.php';
-// Kontrolloni nëse formulari është dërguar me metodën POST
+// Check if the form is submitted via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Merrni të dhënat nga formulari
+    // Get data from the form
     $emri = $_POST['emri'];
     $mbiemri = $_POST['mbiemri'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $roleName = $_POST['role'];  // Kjo është emri i rolit (si USER, ADMIN, etj.)
+    $roleName = $_POST['role'];  // This is the role name (like USER, ADMIN, etc.)
 
-    // Kontrolloni nëse fjalëkalimi dhe konfirmimi i fjalëkalimit përputhen
+    // Check if password and confirm password match
     if ($password != $cpassword) {
-        die("Fjalëkalimi dhe konfirmimi i fjalëkalimit nuk përputhen.");
+        die("Password and confirm password do not match.");
     }
 
-    // Hashing fjalëkalimi për siguri
+    // Hashing password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Gjeni role_id nga tabela roles bazuar në rolin (p.sh. USER, ADMIN)
+    // Find role_id from roles table based on the role (e.g., USER, ADMIN)
     $sqlRole = "SELECT id FROM roles WHERE name = ?";
-    $paramsRole = array($roleName);
-    $stmtRole = sqlsrv_query($conn, $sqlRole, $paramsRole);
+    $stmtRole = $conn->prepare($sqlRole);
+    $stmtRole->bind_param("s", $roleName);
+    $stmtRole->execute();
+    $resultRole = $stmtRole->get_result();
 
-    if ($stmtRole === false) {
-        die("Gabim gjatë kërkimit të role_id: " . print_r(sqlsrv_errors(), true));
+    if ($resultRole->num_rows == 0) {
+        die("The selected role does not exist.");
     }
 
-    $role = sqlsrv_fetch_array($stmtRole, SQLSRV_FETCH_ASSOC);
-    
-    if ($role === false) {
-        die("Roli i zgjedhur nuk ekziston.");
-    }
-
-    // Përdorim role_id nga tabela roles
+    $role = $resultRole->fetch_assoc();
     $roleId = $role['id'];
 
-    // Parametrat për pyetjen SQL për regjistrimin e përdoruesit
+    // Parameters for the SQL query to register the user
     $sql = "INSERT INTO users (emri, mbiemri, email, password, role_id) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssi", $emri, $mbiemri, $email, $hashedPassword, $roleId);
 
-    // Parametrat për pyetjen
-    $params = array($emri, $mbiemri, $email, $hashedPassword, $roleId);
-
-    // Ekzekuto pyetjen SQL
-    $stmt = sqlsrv_query($conn, $sql, $params);
-
-    // Kontrolloni nëse ka ndodhur një gabim gjatë ekzekutimit të pyetjes
-    if ($stmt === false) {
-        die("Gabim gjatë regjistrimit: " . print_r(sqlsrv_errors(), true));
-    } else {
-        // Përdoruesi është regjistruar, drejtoje përdoruesin te faqja e login
+    // Execute the SQL query
+    if ($stmt->execute()) {
+        // User registered, redirect to login page
         header("Location: login.html");
-        exit(); // Sigurohuni që të ndaloni ekzekutimin e mëtejshëm
+        exit(); // Ensure to stop further execution
+    } else {
+        die("Error during registration: " . $stmt->error);
     }
 }
 
-// Mbyll lidhjen me databazën
-sqlsrv_close($conn);
+// Close the database connection
+$conn->close();
 ?>
