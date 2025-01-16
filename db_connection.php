@@ -12,5 +12,5 @@ $conn = new mysqli($serverName, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Gabim gjatë lidhjes me bazën e të dhënave: " . $conn->connect_error);
 }
-echo "Lidhja me bazën e të dhënave është bërë me sukses!";
+//echo "Lidhja me bazën e të dhënave është bërë me sukses!";
 ?>
