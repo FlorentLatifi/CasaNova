@@ -1,29 +1,25 @@
+<?php
+session_start();
+include 'db_connection.php';
+
+// Kontrollo nëse përdoruesi është i kyçur dhe merr rolin
+$isLoggedIn = isset($_SESSION['user_id']);
+$userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buy Your Dream Home</title>
-    <!-- Ensure this path matches the location of your CSS file -->
+    <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="buy.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
-    <!-- Header Section -->
-    <header class="header" id="header-buy">
-      <div class="header-logo">
-        <a href="index.html">
-          <img src="fotot/logo.png" alt="CasaNova Logo"/></a>
-      </div>
-      <nav class="navbar">
-        <ul class="navbar-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#footer">Contact Us</a></li>
-          <li><a href="index.html#intro">About Us</a></li>
-          <li><a href="login.html" class="btn navbar-login">Log In</a></li>
-          <li><a href="signup.html" class="btn navbar-login">Sign Up</a></li>
-        </ul>
-      </nav>
-    </header>
+    <!-- Përfshij nav.php -->
+    <?php include 'nav.php'; ?>
 
     <!-- Main Content -->
     <main>

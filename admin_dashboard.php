@@ -1,42 +1,101 @@
+<?php
+session_start();
+include 'db_connection.php';
+
+// Kontrollo nëse përdoruesi është admin
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 2) {
+    header("Location: login.html");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CasaNova</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Admin Dashboard - CasaNova</title>
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
   <body>
-    <div class="nav">
-      <div class="nav-logo">
-        <a href="index.html"> <img src="./fotot/logo.png" alt="Logo" /></a>
-      </div>
-      <div class="list nav-list">
-        <ul>
-          <li><a href="buy.htm">Buy</a></li>
-          <li><a href="buy.htm">Sell</a></li>
-          <li><a href="buy.htm">Rent</a></li>
-          <li><a href="index.html">My Home</a></li>
-          <li><a href="">Dashboard</a></li>
-        </ul>
-      </div>
+    <?php include 'nav.php'; ?>
+
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+        
+        <!-- Statistics Section -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <i class="fas fa-home"></i>
+                <h3>Total Properties</h3>
+                <?php
+                $result = $conn->query("SELECT COUNT(*) as total FROM products");
+                $row = $result->fetch_assoc();
+                echo "<p>" . $row['total'] . "</p>";
+                ?>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Properties for Sale</h3>
+                <?php
+                $result = $conn->query("SELECT COUNT(*) as total FROM products WHERE type='sale'");
+                $row = $result->fetch_assoc();
+                echo "<p>" . $row['total'] . "</p>";
+                ?>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-key"></i>
+                <h3>Properties for Rent</h3>
+                <?php
+                $result = $conn->query("SELECT COUNT(*) as total FROM products WHERE type='rent'");
+                $row = $result->fetch_assoc();
+                echo "<p>" . $row['total'] . "</p>";
+                ?>
+            </div>
+        </div>
+
+        <!-- Recent Properties Section -->
+        <div class="recent-properties">
+            <h2>Recent Properties</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT * FROM products ORDER BY created_at DESC LIMIT 5";
+                    $result = $conn->query($sql);
+                    while($row = $result->fetch_assoc()):
+                    ?>
+                    <tr>
+                        <td><?php echo $row['title']; ?></td>
+                        <td><?php echo ucfirst($row['type']); ?></td>
+                        <td>$<?php echo number_format($row['price']); ?></td>
+                        <td><?php echo ucfirst($row['status']); ?></td>
+                        <td>
+                            <a href="edit_property.php?id=<?php echo $row['id']; ?>" class="action-btn edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a href="delete_property.php?id=<?php echo $row['id']; ?>" class="action-btn delete" 
+                               onclick="return confirm('Are you sure you want to delete this property?')">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="header" id="intro">
-      <h1 class="welcome">Welcome to <span>CasaNova Neighborhood</span></h1>
-      <h3><b>Where Every Home Becomes Part of a Timeless Story</b></h3>
-
-      <div class="list header-list">
-        <ul>
-          <li><a href="buy.htm">Buy</a></li>
-          <li><a href="buy.htm">Sell</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="#house">My Home</a></li>
-        </ul>
-        <a href="" class="btn">Discover More</a>
-      </div>
-    </div>
     <div class="main">
       <div class="main-content" id="main">
         <h3 class="h3-main">Welcome to CasaNova: A Vision for Modern Living</h3>
@@ -45,7 +104,7 @@
           standard of living is not just a dream, but a reality brought to life.
         </div>
         <div class="main-p">
-          Envisioned with inspiration from the world’s most advanced
+          Envisioned with inspiration from the world's most advanced
           infrastructure and crafted by globally acclaimed architects, this
           ambitious project is being executed by the largest architectural firm
           in Kosovo. Our goal is to deliver a township that stands out in every
@@ -177,7 +236,7 @@
       </div>
       <div class="testimonial">
         <p>
-          "I love the peaceful environment here. It’s the perfect place to raise
+          "I love the peaceful environment here. It's the perfect place to raise
           a family!"
         </p>
         <h4>

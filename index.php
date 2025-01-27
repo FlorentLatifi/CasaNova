@@ -1,27 +1,19 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CasaNova</title>
+    <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
-    <div class="nav">
-      <div class="nav-logo">
-        <a href="index.html"> <img src="./fotot/logo.png" alt="Logo" /></a>
-      </div>
-      <div class="list nav-list">
-        <ul>
-          <li><a href="buy.htm">Buy</a></li>
-          <li><a href="buy.htm">Sell</a></li>
-          <li><a href="buy.htm">Rent</a></li>
-          <li><a href="index.html">My Home</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="signup.html">Sign Up</a></li>
-        </ul>
-      </div>
-    </div>
+    <?php include 'nav.php'; ?>
 
     <div class="header" id="intro">
       <h1 class="welcome">Welcome to <span>CasaNova Neighborhood</span></h1>
@@ -45,7 +37,7 @@
           standard of living is not just a dream, but a reality brought to life.
         </div>
         <div class="main-p">
-          Envisioned with inspiration from the world’s most advanced
+          Envisioned with inspiration from the world's most advanced
           infrastructure and crafted by globally acclaimed architects, this
           ambitious project is being executed by the largest architectural firm
           in Kosovo. Our goal is to deliver a township that stands out in every
@@ -177,7 +169,7 @@
       </div>
       <div class="testimonial">
         <p>
-          "I love the peaceful environment here. It’s the perfect place to raise
+          "I love the peaceful environment here. It's the perfect place to raise
           a family!"
         </p>
         <h4>

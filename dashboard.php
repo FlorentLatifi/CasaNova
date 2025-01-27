@@ -22,7 +22,9 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - CasaNova</title>
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         function confirmDelete() {
             return confirm("Are you sure you want to delete this user?");
@@ -30,15 +32,8 @@ $result = $stmt->get_result();
     </script>
 </head>
 <body>
-    <header>
-        <h1>Admin Dashboard</h1>
-        <nav>
-            <ul>
-                <li><a href="superadmin_dashboard.php">Home</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include 'nav.php'; ?>
+    
     <main>
         <h2>User Management</h2>
         <table>

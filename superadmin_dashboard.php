@@ -1,220 +1,200 @@
+<?php
+session_start();
+include 'db_connection.php';
+
+// Kontrollo nëse përdoruesi është superadmin
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 3) {
+    header("Location: login.html");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CasaNova</title>
+    <title>Superadmin Dashboard - CasaNova</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
-    <div class="nav">
-      <div class="nav-logo">
-        <a href="index.html"> <img src="./fotot/logo.png" alt="Logo" /></a>
+    <!-- Përfshij nav.php në vend të nav-it të vjetër -->
+    <?php include 'nav.php'; ?>
+
+    <div class="dashboard-container">
+      <div class="main">
+        <div class="main-content" id="main">
+          <h3 class="h3-main">Welcome to CasaNova: A Vision for Modern Living</h3>
+          <div class="main-p">
+            CasaNova Township is a testament to our belief that elevating the
+            standard of living is not just a dream, but a reality brought to life.
+          </div>
+          <div class="main-p">
+            Envisioned with inspiration from the world's most advanced
+            infrastructure and crafted by globally acclaimed architects, this
+            ambitious project is being executed by the largest architectural firm
+            in Kosovo. Our goal is to deliver a township that stands out in every
+            way, offering a truly unique living experience.
+          </div>
+        </div>
       </div>
-      <div class="list nav-list">
+      <div class="main amenities-section">
+        <h2>Our Amenities</h2>
+
         <ul>
-          <li><a href="buy.htm">Buy</a></li>
-          <li><a href="buy.htm">Sell</a></li>
-          <li><a href="buy.htm">Rent</a></li>
-          <li><a href="index.html">My Home</a></li>
-          <li><a href="dashboard.php">Dashboard</a></li>
-          <li class="dropdown">
-            <a href="#"><i class="fas fa-crown"></i></a>
-            <!-- Dropdown Menu -->
-            <div class="dropdown-content">
-              <a href="logout.php">Logout</a>
+          <li>Community Parks and Green Spaces</li>
+          <li>Modern Fitness Centers</li>
+          <li>Swimming Pools and Sports Facilities</li>
+          <li>Shopping Malls and Restaurants</li>
+          <li>24/7 Security</li>
+        </ul>
+      </div>
+
+      <div class="photo-gallery">
+        <h2>Gallery</h2>
+        <div class="photo-grid">
+          <div class="photo-item">
+            <img
+              src="./fotot/moderni-drevostavba-jako-misto-pro-setkavani-cele-rodiny-drazejov-01.jpg"
+              alt="Modern Home"
+            />
+            <h3>Modern Architecture</h3>
+          </div>
+          <div class="photo-item">
+            <img src="./fotot/11908eu.jpeg" alt="Community Park" />
+            <h3>Community Park</h3>
+          </div>
+          <div class="photo-item">
+            <img src="./fotot/Gated_neighborhood-1024x683-2.jpg" alt="Security" />
+            <h3>Security</h3>
+          </div>
+          <div class="photo-item">
+            <img
+              src="./fotot/MicrosoftTeams-image-499-1-min-1536x864.jpg"
+              alt="Sport Center"
+            />
+            <h3>Sport Centers</h3>
+          </div>
+        </div>
+      </div>
+
+      <section class="house-gallery" id="house">
+        <h2>Available Properties</h2>
+        <div class="house-container">
+          <!-- House 1 -->
+          <div class="house-card" id="house1">
+            <img
+              src="fotot/moderni-drevostavba-jako-misto-pro-setkavani-cele-rodiny-drazejov-01.jpg"
+              alt="Modern House"
+            />
+            <div class="house-details">
+              <h3>Modern House</h3>
+              <p>Area: 250 m²</p>
+              <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
+
+              <a href="buy.htm" class="buy-button">Buy</a>
             </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+          </div>
 
-    <div class="header" id="intro">
-      <h1 class="welcome">Welcome to <span>CasaNova Neighborhood</span></h1>
-      <h3><b>Where Every Home Becomes Part of a Timeless Story</b></h3>
+          <!-- House 2 -->
+          <div class="house-card">
+            <img
+              src="fotot/k-lesu-celem-k-mestu-zady-1___media_library_original_1567_881.jpg"
+              alt="Luxury Villa"
+            />
+            <div class="house-details">
+              <h3>Luxury Villa</h3>
+              <p>Area: 350 m²</p>
+              <p>Rooms: 5 Bedrooms, 4 Bathrooms</p>
 
-      <div class="list header-list">
-        <ul>
-          <li><a href="buy.htm">Buy</a></li>
-          <li><a href="buy.htm">Sell</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="#house">My Home</a></li>
-        </ul>
-        <a href="" class="btn">Discover More</a>
-      </div>
-    </div>
-    <div class="main">
-      <div class="main-content" id="main">
-        <h3 class="h3-main">Welcome to CasaNova: A Vision for Modern Living</h3>
-        <div class="main-p">
-          CasaNova Township is a testament to our belief that elevating the
-          standard of living is not just a dream, but a reality brought to life.
-        </div>
-        <div class="main-p">
-          Envisioned with inspiration from the world’s most advanced
-          infrastructure and crafted by globally acclaimed architects, this
-          ambitious project is being executed by the largest architectural firm
-          in Kosovo. Our goal is to deliver a township that stands out in every
-          way, offering a truly unique living experience.
-        </div>
-      </div>
-    </div>
-    <div class="main amenities-section">
-      <h2>Our Amenities</h2>
+              <a href="buy.htm" class="buy-button">Buy</a>
+            </div>
+          </div>
 
-      <ul>
-        <li>Community Parks and Green Spaces</li>
-        <li>Modern Fitness Centers</li>
-        <li>Swimming Pools and Sports Facilities</li>
-        <li>Shopping Malls and Restaurants</li>
-        <li>24/7 Security</li>
-      </ul>
-    </div>
+          <!-- House 3 -->
+          <div class="house-card">
+            <img
+              src="fotot/Maly-tripodlazni-dum-s-cihelnym-obkladem-a-anglickym-nadechem-Hradec-Kralove-01___media_library_original_1567_881.jpg"
+            />
+            <div class="house-details">
+              <h3>Cozy Cottage</h3>
+              <p>Area: 180 m²</p>
+              <p>Rooms: 3 Bedrooms, 2 Bathrooms</p>
 
-    <div class="photo-gallery">
-      <h2>Gallery</h2>
-      <div class="photo-grid">
-        <div class="photo-item">
-          <img
-            src="./fotot/moderni-drevostavba-jako-misto-pro-setkavani-cele-rodiny-drazejov-01.jpg"
-            alt="Modern Home"
-          />
-          <h3>Modern Architecture</h3>
-        </div>
-        <div class="photo-item">
-          <img src="./fotot/11908eu.jpeg" alt="Community Park" />
-          <h3>Community Park</h3>
-        </div>
-        <div class="photo-item">
-          <img src="./fotot/Gated_neighborhood-1024x683-2.jpg" alt="Security" />
-          <h3>Security</h3>
-        </div>
-        <div class="photo-item">
-          <img
-            src="./fotot/MicrosoftTeams-image-499-1-min-1536x864.jpg"
-            alt="Sport Center"
-          />
-          <h3>Sport Centers</h3>
-        </div>
-      </div>
-    </div>
+              <a href="buy.htm" class="buy-button">Buy</a>
+            </div>
+          </div>
 
-    <section class="house-gallery" id="house">
-      <h2>Available Properties</h2>
-      <div class="house-container">
-        <!-- House 1 -->
-        <div class="house-card" id="house1">
-          <img
-            src="fotot/moderni-drevostavba-jako-misto-pro-setkavani-cele-rodiny-drazejov-01.jpg"
-            alt="Modern House"
-          />
-          <div class="house-details">
-            <h3>Modern House</h3>
-            <p>Area: 250 m²</p>
-            <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
+          <!-- House 4 -->
+          <div class="house-card">
+            <img
+              src="fotot/shitet-shtepija-ne-veternik-lagjja-qendresa-207m2.jpeg"
+              alt="Contemporary Home"
+            />
+            <div class="house-details">
+              <h3>Contemporary Home</h3>
+              <p>Area: 300 m²</p>
+              <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
 
-            <a href="buy.htm" class="buy-button">Buy</a>
+              <a href="buy.htm" class="buy-button">Buy</a>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- House 2 -->
-        <div class="house-card">
-          <img
-            src="fotot/k-lesu-celem-k-mestu-zady-1___media_library_original_1567_881.jpg"
-            alt="Luxury Villa"
-          />
-          <div class="house-details">
-            <h3>Luxury Villa</h3>
-            <p>Area: 350 m²</p>
-            <p>Rooms: 5 Bedrooms, 4 Bathrooms</p>
-
-            <a href="buy.htm" class="buy-button">Buy</a>
-          </div>
+      <div class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial">
+          <p>
+            "Living in CasaNova has been a dream come true. The amenities and
+            community are unmatched!"
+          </p>
+          <h4><img src="fotot/girlpfp.png" alt="" class="leart" /> - Jane Doe</h4>
         </div>
-
-        <!-- House 3 -->
-        <div class="house-card">
-          <img
-            src="fotot/Maly-tripodlazni-dum-s-cihelnym-obkladem-a-anglickym-nadechem-Hradec-Kralove-01___media_library_original_1567_881.jpg"
-          />
-          <div class="house-details">
-            <h3>Cozy Cottage</h3>
-            <p>Area: 180 m²</p>
-            <p>Rooms: 3 Bedrooms, 2 Bathrooms</p>
-
-            <a href="buy.htm" class="buy-button">Buy</a>
-          </div>
+        <div class="testimonial">
+          <p>
+            "The homes are beautifully designed, and the neighborhood is safe and
+            welcoming."
+          </p>
+          <h4>
+            <img src="fotot/leart.png" alt="" class="leart" /> - Leart Bokshi
+          </h4>
         </div>
-
-        <!-- House 4 -->
-        <div class="house-card">
-          <img
-            src="fotot/shitet-shtepija-ne-veternik-lagjja-qendresa-207m2.jpeg"
-            alt="Contemporary Home"
-          />
-          <div class="house-details">
-            <h3>Contemporary Home</h3>
-            <p>Area: 300 m²</p>
-            <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
-
-            <a href="buy.htm" class="buy-button">Buy</a>
-          </div>
+        <div class="testimonial">
+          <p>
+            "I love the peaceful environment here. It's the perfect place to raise
+            a family!"
+          </p>
+          <h4>
+            <img src="fotot/leartii.png" alt="" class="leart" /> - John Johnson
+          </h4>
         </div>
       </div>
-    </section>
 
-    <div class="testimonials">
-      <h2>What Our Clients Say</h2>
-      <div class="testimonial">
+      <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <h4>How do I book a property?</h4>
+        <p>You can contact us directly or schedule a tour through our website.</p>
+        <h4>Are there financing options available?</h4>
         <p>
-          "Living in CasaNova has been a dream come true. The amenities and
-          community are unmatched!"
+          Yes, we work with multiple financial institutions to provide mortgage
+          options.
         </p>
-        <h4><img src="fotot/girlpfp.png" alt="" class="leart" /> - Jane Doe</h4>
-      </div>
-      <div class="testimonial">
+
+        <h4>Is CasaNova suitable for families?</h4>
         <p>
-          "The homes are beautifully designed, and the neighborhood is safe and
-          welcoming."
+          Absolutely! CasaNova is designed with families in mind, featuring safe
+          play areas, excellent schools nearby, and a family-friendly environment.
         </p>
-        <h4>
-          <img src="fotot/leart.png" alt="" class="leart" /> - Leart Bokshi
-        </h4>
-      </div>
-      <div class="testimonial">
+
+        <h4>Can I customize my home?</h4>
         <p>
-          "I love the peaceful environment here. It’s the perfect place to raise
-          a family!"
+          Yes, we offer customization packages to tailor your new home to your
+          preferences and lifestyle.
         </p>
-        <h4>
-          <img src="fotot/leartii.png" alt="" class="leart" /> - John Johnson
-        </h4>
       </div>
-    </div>
-
-    <div class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <h4>How do I book a property?</h4>
-      <p>You can contact us directly or schedule a tour through our website.</p>
-      <h4>Are there financing options available?</h4>
-      <p>
-        Yes, we work with multiple financial institutions to provide mortgage
-        options.
-      </p>
-
-      <h4>Is CasaNova suitable for families?</h4>
-      <p>
-        Absolutely! CasaNova is designed with families in mind, featuring safe
-        play areas, excellent schools nearby, and a family-friendly environment.
-      </p>
-
-      <h4>Can I customize my home?</h4>
-      <p>
-        Yes, we offer customization packages to tailor your new home to your
-        preferences and lifestyle.
-      </p>
     </div>
 
     <footer class="site-footer" id="footer">
