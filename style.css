@@ -11,25 +11,21 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
   background-color: #f5f5f5;
   color: #333;
-  line-height: 1.6;
 }
 
-/* Remove old navbar styles */
-/* Start content styles after navbar */
-.hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./fotot/hero.jpg");
-  height: calc(100vh - 70px); /* Adjust for navbar height */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.header {
   position: relative;
+  height: 80vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+      url('./fotot/k-lesu-celem-k-mestu-zady-1___media_library_original_1567_881.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,95 +33,392 @@ body {
   color: white;
 }
 
-.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-
-/* Services Section */
-.services {
-  padding: 80px 0;
-  background-color: #f9f9f9;
-}
-
-.services h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.services-container {
+.header-content {
   max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
   padding: 0 20px;
 }
 
-.service-card {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
 }
 
-.service-card img {
-  width: 60px;
-  height: 60px;
+.header h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.header-actions ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.header-actions a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid white;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.header-actions a:hover {
+  background-color: white;
+  color: #333;
+}
+
+.header-list ul {
+  display: flex;
+  list-style: none;
+  padding: 1.5em;
+}
+
+.header-list ul li {
+  margin: 0 15px;
+}
+
+.header-list ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+}
+
+.header .btn {
+  padding: 10px 20px;
+  background-color: #e5e7eb;
+  color: #020617;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.btn {
+  background-color: whitesmoke;
+}
+
+.header .btn:hover {
+  background-color: #d1d5db;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50vh;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.h3-main {
+  padding-bottom: 2em;
+  font-weight: bold;
+}
+
+.main-content {
+  max-width: 800px;
+}
+
+.main-p {
   margin-bottom: 20px;
+  color: #333;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
 
 /* About Section */
-.about {
-  padding: 80px 0;
+.about-section {
+  min-height: 50vh; /* Section takes 50% of the viewport height */
+
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: center;
 }
 
-.about-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 0 20px;
-  align-items: center;
-}
+.about-section h2 {
+  color: #111827;
 
-.about-text {
-  padding-right: 20px;
-}
-
-.about-image img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  padding: 40px 0;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  padding: 0 20px;
-}
-
-.footer-section h3 {
   margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Amenities Section */
+.amenities-section {
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 50vh; /* Section takes 50% of the viewport height */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.amenities-section h2 {
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.amenities-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.amenities-section ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* General Styling */
+.photo-gallery {
+  height: 80vh;
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f5f5f5; /* Light background for contrast */
+}
+
+.photo-gallery h2 {
+  padding-top: 5vh;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333; /* Neutral, readable color */
+}
+
+/* Photo Grid Styling */
+.photo-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+  padding: 20px 0;
+}
+
+/* Individual Photo Items */
+.photo-item {
+  flex: 1 1 22%;
+  max-width: 22%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.photo-item img {
+  width: 100%; /* Fills the container */
+  height: 200px; /* Consistent height for all images */
+  object-fit: cover; /* Ensures the image fills the dimensions */
+  border-radius: 8px; /* Rounded corners for aesthetics */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.photo-item h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #555; /* Slightly muted color for captions */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .photo-item {
+    flex: 1 1 45%; /* Adjusts to 2 items per row */
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-item {
+    flex: 1 1 100%; /* Stacks items on small screens */
+    max-width: 100%;
+  }
+}
+
+/* Section Styles */
+.house-gallery {
+  padding: 50px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.house-gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* House Container */
+.house-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* House Card */
+.house-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.house-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.house-details {
+  padding: 15px;
+}
+
+.house-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.house-details p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.buy-button {
+  display: block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #e0e0e0;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.buy-button:hover {
+  background-color: #c0c0c0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .house-card {
+    width: 100%;
+  }
+}
+
+/* Testimonials */
+.testimonials {
+  min-height: 50vh; /* Section takes 50% of the viewport height */
+
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow at the top */
+
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.testimonials h2 {
+  color: #111827;
+
+  margin-bottom: 20px;
+}
+
+.testimonial {
+  margin-bottom: 20px;
+}
+
+.testimonial p {
+  font-style: italic;
+  color: #555;
+}
+
+.testimonial h4 {
+  margin-top: 10px;
+  color: #111827;
+  font-weight: bold;
+}
+
+/* FAQ Section */
+.faq {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  text-align: left;
+
+  text-align: center;
+}
+
+.faq h2 {
+  color: #111827;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.faq h4 {
+  margin-top: 20px;
+  color: #333;
+}
+
+.faq p {
+  color: #555;
+  margin: auto;
+}
+
+/* Contact Section */
+.site-footer {
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow at the top */
+  padding-top: 20px;
+  background-color: #f5f5f5;
+
+  color: #111827;
+  padding: 40px 20px;
+  font-family: "Montserrat", serif;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+.footer-section p {
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 400;
 }
 
 .footer-section ul {
   list-style: none;
+  padding: 0;
 }
 
 .footer-section ul li {
@@ -133,88 +426,137 @@ footer {
 }
 
 .footer-section ul li a {
-  color: white;
+  color: #555;
+  font-weight: 400;
   text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
-.social-links {
-  display: flex;
-  gap: 15px;
+.footer-section ul li a:hover {
+  color: #777;
 }
 
 .social-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
+  color: #ffffff;
+  margin-right: 15px;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
 
-.copyright {
+.social-links a:hover {
+  color: #777;
+}
+
+.footer-bottom {
+  font-weight: bold;
   text-align: center;
-  padding-top: 20px;
-  margin-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  font-size: 0.8rem;
+  color: #777;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .about-container {
-    grid-template-columns: 1fr;
+  .footer-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .about-text {
-    padding-right: 0;
+  .footer-section {
+    text-align: center;
   }
 
-  .hero {
-    height: calc(100vh - 120px); /* Adjust for mobile navbar height */
+  .social-links {
+    justify-content: center;
   }
 }
 
-/* Button Styles */
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #4a90e2;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.btn:hover {
-  background-color: #357abd;
-}
-
-/* Typography */
-h1, h2, h3 {
-  margin-bottom: 20px;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-p {
-  margin-bottom: 15px;
-}
-
-/* Utility Classes */
-.text-center {
-  text-align: center;
+.properties-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Remove any old .nav, .nav-list, or other navbar related styles */
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.property-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+.property-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.property-details {
+    padding: 1.5rem;
+}
+
+.property-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.property-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #357abd;
+}
+
+/* Për fotot e klientëve në testimonials */
+.leart {
+    width: 40px;  /* Zvogëlim nga madhësia aktuale */
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+/* Për ikonat sociale në footer */
+.social-icon {
+    width: 24px;  /* Zvogëlim nga madhësia aktuale */
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}

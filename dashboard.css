@@ -495,11 +495,4 @@ h2 {
 }
 
 /* Remove any conflicting navbar styles */
-.nav,
-.nav-container,
-.nav-logo,
-.nav-list,
-.dropdown,
-.dropdown-content {
-    /* Remove any styles that might conflict with navbar.css */
-}
+

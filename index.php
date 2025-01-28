@@ -7,26 +7,29 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CasaNova</title>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="dashboard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Remove dashboard.css if not needed -->
+    <!-- <link rel="stylesheet" href="dashboard.css" /> -->
   </head>
   <body>
     <?php include 'nav.php'; ?>
 
     <div class="header" id="intro">
-      <h1 class="welcome">Welcome to <span>CasaNova Neighborhood</span></h1>
-      <h3><b>Where Every Home Becomes Part of a Timeless Story</b></h3>
-
-      <div class="list header-list">
-        <ul>
-          <li><a href="buy.htm">Buy</a></li>
-          <li><a href="buy.htm">Sell</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="#house">My Home</a></li>
-        </ul>
-        <a href="" class="btn">Discover More</a>
+      <div class="header-content">
+        <h1>Welcome to <span>CasaNova Neighborhood</span></h1>
+        <h3><b>Where Every Home Becomes Part of a Timeless Story</b></h3>
+        <div class="header-actions">
+          <ul>
+            <li><a href="buy.php">Buy</a></li>
+            <li><a href="sell.php">Sell</a></li>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+              <li><a href="login.html">Login</a></li>
+            <?php endif; ?>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="main">
@@ -85,66 +88,25 @@ session_start();
       </div>
     </div>
 
-    <section class="house-gallery" id="house">
-      <h2>Available Properties</h2>
-      <div class="house-container">
-        <!-- House 1 -->
-        <div class="house-card" id="house1">
-          <img
-            src="fotot/moderni-drevostavba-jako-misto-pro-setkavani-cele-rodiny-drazejov-01.jpg"
-            alt="Modern House"
-          />
-          <div class="house-details">
-            <h3>Modern House</h3>
-            <p>Area: 250 m²</p>
-            <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
-
-            <a href="buy.htm" class="buy-button">Buy</a>
+    <section class="properties-section">
+      <div class="container">
+        <h2>Available Properties</h2>
+        <div class="properties-grid">
+          <div class="property-card">
+            <div class="property-image">
+              <img src="fotot/moderni-drevostavba-jako-misto-pro-setkavani-cele-rodiny-drazejov-01.jpg" alt="Modern House">
+            </div>
+            <div class="property-details">
+              <h3>Modern House</h3>
+              <div class="property-info">
+                <span><i class="fas fa-ruler-combined"></i> 250 m²</span>
+                <span><i class="fas fa-bed"></i> 4 Bedrooms</span>
+                <span><i class="fas fa-bath"></i> 3 Bathrooms</span>
+              </div>
+              <a href="buy.php" class="buy-button">View Details</a>
+            </div>
           </div>
-        </div>
-
-        <!-- House 2 -->
-        <div class="house-card">
-          <img
-            src="fotot/k-lesu-celem-k-mestu-zady-1___media_library_original_1567_881.jpg"
-            alt="Luxury Villa"
-          />
-          <div class="house-details">
-            <h3>Luxury Villa</h3>
-            <p>Area: 350 m²</p>
-            <p>Rooms: 5 Bedrooms, 4 Bathrooms</p>
-
-            <a href="buy.htm" class="buy-button">Buy</a>
-          </div>
-        </div>
-
-        <!-- House 3 -->
-        <div class="house-card">
-          <img
-            src="fotot/Maly-tripodlazni-dum-s-cihelnym-obkladem-a-anglickym-nadechem-Hradec-Kralove-01___media_library_original_1567_881.jpg"
-          />
-          <div class="house-details">
-            <h3>Cozy Cottage</h3>
-            <p>Area: 180 m²</p>
-            <p>Rooms: 3 Bedrooms, 2 Bathrooms</p>
-
-            <a href="buy.htm" class="buy-button">Buy</a>
-          </div>
-        </div>
-
-        <!-- House 4 -->
-        <div class="house-card">
-          <img
-            src="fotot/shitet-shtepija-ne-veternik-lagjja-qendresa-207m2.jpeg"
-            alt="Contemporary Home"
-          />
-          <div class="house-details">
-            <h3>Contemporary Home</h3>
-            <p>Area: 300 m²</p>
-            <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
-
-            <a href="buy.htm" class="buy-button">Buy</a>
-          </div>
+          <!-- Përsëritni të njëjtën strukturë për shtëpitë e tjera -->
         </div>
       </div>
     </section>
