@@ -22,9 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image_url = "";
     
     if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+        $image_name = basename($_FILES["image"]["name"]);
+        $target_file = $target_dir . $image_name;
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            $image_url = $target_file;
+            $image_url = $image_name;
         }
     }
     

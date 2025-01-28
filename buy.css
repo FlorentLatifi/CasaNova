@@ -203,89 +203,128 @@ body {
 
 /* Hero Section */
 .hero {
-  background-color: #4a90e2;
+  height: 50vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('./fotot/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
   text-align: center;
-  padding: 60px 20px;
-  margin-bottom: 40px;
+  padding: 0 20px;
+  margin-bottom: 2rem;
 }
 
 .hero h1 {
-  font-size: 36px;
-  margin-bottom: 15px;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
-  font-size: 18px;
-  opacity: 0.9;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* House Listings */
-.house-listings {
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  color: #333;
+  font-size: 2rem;
+}
+
+/* Property Listings */
+.house-listings, .rental-listings {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-.house-card {
+.house, .rental {
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.house-card:hover {
-  transform: translateY(-5px);
+.house:hover, .rental:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.house-image {
+.house-img, .rental-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-.house-info {
-  padding: 20px;
-}
-
-.house-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.house-price {
-  color: #4a90e2;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.house-details {
+.house-details, .rental-details {
+  padding: 1.2rem;
+  flex: 1;
   display: flex;
-  justify-content: space-between;
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 15px;
+  flex-direction: column;
 }
 
-.view-button {
-  display: inline-block;
-  width: 100%;
-  padding: 12px;
+.house-details h2, .rental-details h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+.property-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.8rem 0;
+  padding: 0.8rem 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.property-info span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.property-info i {
+  color: #4a90e2;
+  font-size: 1.1rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #4a90e2;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.buy-btn {
+  margin-top: auto;
+  padding: 0.8rem;
   background-color: #4a90e2;
   color: white;
-  text-decoration: none;
-  text-align: center;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.view-button:hover {
+.buy-btn:hover {
   background-color: #357abd;
 }
 
@@ -343,9 +382,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
   z-index: 1000;
   width: 90%;
   max-width: 400px;
@@ -388,77 +427,84 @@ body {
   color: #666;
 }
 
-/* Footer Styles */
+/* Footer Styling */
 .site-footer {
-  background-color: #333;
+  background-color: #1a1a1a;
   color: white;
-  padding: 40px 20px;
-  margin-top: 60px;
+  padding: 4rem 0 2rem;
 }
 
 .footer-wrapper {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 3rem;
 }
 
 .footer-section {
-  padding: 20px;
+  padding: 0 1rem;
 }
 
 .footer-section h3,
 .footer-section h4 {
-  margin-bottom: 15px;
+  margin-bottom: 1.2rem;
+  color: #4a90e2;
 }
 
 .footer-section.links ul {
   list-style: none;
+  padding: 0;
 }
 
 .footer-section.links a {
-  color: white;
+  color: #fff;
   text-decoration: none;
+  transition: color 0.3s ease;
+  line-height: 2;
 }
 
-.social-links {
+.footer-section.links a:hover {
+  color: #4a90e2;
+}
+
+.footer-section.contact p {
+  margin: 0.8rem 0;
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 0.8rem;
 }
 
-.social-icon {
-  width: 30px;
-  height: 30px;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+.footer-section.contact i {
+  color: #4a90e2;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .hero {
-    padding: 40px 20px;
-  }
-
   .hero h1 {
-    font-size: 28px;
+    font-size: 2rem;
   }
-
+  
   .hero p {
-    font-size: 16px;
+    font-size: 1rem;
   }
-
-  .house-listings {
+  
+  .house-listings, .rental-listings {
     grid-template-columns: 1fr;
   }
-
-  .filters form {
+  
+  .house-img, .rental-img {
+    height: 180px;
+  }
+  
+  .footer-wrapper {
     grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-section.contact p {
+    justify-content: center;
   }
 }
 
