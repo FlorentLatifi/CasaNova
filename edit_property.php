@@ -120,5 +120,34 @@ $property = $result->fetch_assoc();
             </div>
         </form>
     </div>
+
+    <?php
+    if (isset($_POST['property_id'])) {
+        $property_id = $_POST['property_id'];
+        $title = $_POST['title'];
+
+        // Update property in the database
+        $sql = "UPDATE products SET title = ?, description = ?, price = ?, area = ?, bedrooms = ?, bathrooms = ?, location = ?, status = ? WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssssi", $_POST['title'], $_POST['description'], $_POST['price'], $_POST['area'], $_POST['bedrooms'], $_POST['bathrooms'], $_POST['location'], $_POST['status'], $property_id);
+
+        if ($stmt->execute()) {
+            // Regjistro veprimin në product_actions
+            $action_sql = "INSERT INTO product_actions (product_id, user_id, action_type, action_details) 
+                          VALUES (?, ?, 'edit', ?)";
+            $action_details = "Property updated: " . $title;
+            $log_stmt = $conn->prepare($action_sql);
+            $log_stmt->bind_param("iis", $property_id, $_SESSION['user_id'], $action_details);
+            $log_stmt->execute();
+            $log_stmt->close();
+
+            $_SESSION['success'] = "Property updated successfully.";
+            header("Location: manage_properties.php");
+            exit();
+        } else {
+            echo "Error updating property: " . $conn->error;
+        }
+    }
+    ?>
 </body>
 </html> 
