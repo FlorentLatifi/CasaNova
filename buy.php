@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 include 'db_connection.php';
 
@@ -38,10 +40,14 @@ $result_rentals = mysqli_query($conn, $query_rentals);
       <section class="house-listings">
         <?php while($house = mysqli_fetch_assoc($result_houses)): ?>
           <div class="house">
-            <img src="./fotot/<?php echo htmlspecialchars($house['image_url']); ?>" 
+            <?php 
+              $image_path = !empty($house['image_url']) ? "fotot/" . $house['image_url'] : "fotot/default-house.jpg";
+              echo "<!-- Debug: Using image path: " . $image_path . " -->";
+            ?>
+            <img src="<?php echo htmlspecialchars($image_path); ?>" 
                  alt="<?php echo htmlspecialchars($house['title']); ?>" 
-                 onerror="this.src='./fotot/default-house.jpg'"
-                 class="house-img" />
+                 class="house-img" 
+                 onerror="this.src='fotot/default-house.jpg'"/>
             <div class="house-details">
               <h2><?php echo htmlspecialchars($house['title']); ?></h2>
               <div class="property-info">
@@ -51,20 +57,24 @@ $result_rentals = mysqli_query($conn, $query_rentals);
               </div>
               <p><i class="fas fa-star"></i> <?php echo htmlspecialchars($house['features']); ?></p>
               <p class="price">$<?php echo number_format($house['price']); ?></p>
-              <button class="buy-btn" onclick="handleBuy(<?php echo $house['id']; ?>)">View Details</button>
+              <button class="buy-button" onclick="handleBuy(<?php echo $house['id']; ?>)">View Details</button>
             </div>
           </div>
         <?php endwhile; ?>
       </section>
 
-      <h2 class="section-title">Rent a house</h2>
+      <h2 class="section-title">Houses for Rent</h2>
       <section class="rental-listings">
         <?php while($rental = mysqli_fetch_assoc($result_rentals)): ?>
           <div class="rental">
-            <img src="./fotot/<?php echo htmlspecialchars($rental['image_url']); ?>" 
+            <?php 
+              $image_path = !empty($rental['image_url']) ? "fotot/" . $rental['image_url'] : "fotot/default-house.jpg";
+              echo "<!-- Debug: Using image path: " . $image_path . " -->";
+            ?>
+            <img src="<?php echo htmlspecialchars($image_path); ?>" 
                  alt="<?php echo htmlspecialchars($rental['title']); ?>" 
-                 onerror="this.src='./fotot/default-house.jpg'"
-                 class="rental-img" />
+                 class="rental-img" 
+                 onerror="this.src='fotot/default-house.jpg'"/>
             <div class="rental-details">
               <h2><?php echo htmlspecialchars($rental['title']); ?></h2>
               <div class="property-info">
@@ -73,8 +83,8 @@ $result_rentals = mysqli_query($conn, $query_rentals);
                 <span><i class="fas fa-bath"></i> <?php echo htmlspecialchars($rental['bathrooms']); ?> Bathrooms</span>
               </div>
               <p><i class="fas fa-star"></i> <?php echo htmlspecialchars($rental['features']); ?></p>
-              <p class="price">$<?php echo number_format($rental['price']); ?>/month</p>
-              <button class="buy-btn" onclick="handleRent(<?php echo $rental['id']; ?>)">View Details</button>
+              <p class="price">$<?php echo number_format($rental['price']); ?> /month</p>
+              <button class="buy-button" onclick="handleRent(<?php echo $rental['id']; ?>)">View Details</button>
             </div>
           </div>
         <?php endwhile; ?>

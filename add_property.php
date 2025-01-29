@@ -24,30 +24,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
         $image_name = basename($_FILES["image"]["name"]);
         $target_file = $target_dir . $image_name;
+        
+        // Debug informacion
+        error_log("Trying to upload file: " . $target_file);
+        
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             $image_url = $image_name;
+            error_log("File uploaded successfully. Image URL: " . $image_url);
+        } else {
+            error_log("Failed to upload file. Error: " . $_FILES["image"]["error"]);
         }
     }
     
-    $sql = "INSERT INTO products (title, type, price, area, bedrooms, bathrooms, features, image_url) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    // Përdor prepared statement për të ruajtur të dhënat
+    $sql = "INSERT INTO products (title, type, price, area, bedrooms, bathrooms, features, image_url, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'available')";
     
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssddiisd", $title, $type, $price, $area, $bedrooms, $bathrooms, $features, $image_url);
-    
-    if ($stmt->execute()) {
-        $product_id = $conn->insert_id;
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("ssssssss", $title, $type, $price, $area, $bedrooms, $bathrooms, $features, $image_url);
         
-        // Regjistro veprimin
-        $action_sql = "INSERT INTO product_actions (product_id, user_id, action_type, action_details) 
-                      VALUES (?, ?, 'add', ?)";
-        $action_details = "Added new property: " . $title;
-        $stmt = $conn->prepare($action_sql);
-        $stmt->bind_param("iis", $product_id, $_SESSION['user_id'], $action_details);
-        $stmt->execute();
-        
-        header("Location: manage_properties.php");
-        exit();
+        if ($stmt->execute()) {
+            $product_id = $conn->insert_id;
+            
+            // Regjistro veprimin
+            $action_sql = "INSERT INTO product_actions (product_id, user_id, action_type, action_details) 
+                          VALUES (?, ?, 'add', ?)";
+            $action_details = "Added new property: " . $title;
+            $stmt = $conn->prepare($action_sql);
+            $stmt->bind_param("iis", $product_id, $_SESSION['user_id'], $action_details);
+            $stmt->execute();
+            
+            header("Location: manage_properties.php");
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+        $stmt->close();
+    } else {
+        echo "Error: " . $conn->error;
     }
 }
 ?>
