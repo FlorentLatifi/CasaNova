@@ -3,8 +3,10 @@ include 'db_connection.php';
 session_start();
 
 // Check if the user is a superadmin
-if ($_SESSION['user_role'] != 3) { // Assuming 3 is the role_id for superadmin
-    die("Access denied.");
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 3) {
+    session_destroy();
+    header("Location: login.html");
+    exit();
 }
 
 // Fetch the list of users

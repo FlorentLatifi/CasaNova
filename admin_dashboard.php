@@ -17,6 +17,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 2) {
     <title>Admin Dashboard - CasaNova</title>
     <link rel="stylesheet" href="navbar.css" />
     <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
   <body>

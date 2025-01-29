@@ -27,6 +27,24 @@ $result = $conn->query($sql);
     <?php include 'nav.php'; ?>
 
     <div class="dashboard-container">
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success">
+                <?php 
+                echo $_SESSION['success'];
+                unset($_SESSION['success']);
+                ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger">
+                <?php 
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
+            </div>
+        <?php endif; ?>
+
         <div class="header-actions">
             <h1>Manage Properties</h1>
             <a href="add_property.php" class="add-btn"><i class="fas fa-plus"></i> Add New Property</a>
@@ -68,9 +86,11 @@ $result = $conn->query($sql);
                             <a href="edit_property.php?id=<?php echo $row['id']; ?>" class="action-btn edit">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <button onclick="deleteProperty(<?php echo $row['id']; ?>)" class="action-btn delete">
+                            <a href="delete_property.php?id=<?php echo $row['id']; ?>" 
+                               class="action-btn delete"
+                               onclick="return confirm('Are you sure you want to delete this property? This action cannot be undone.');">
                                 <i class="fas fa-trash"></i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                     <?php endwhile; ?>

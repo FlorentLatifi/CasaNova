@@ -91,7 +91,7 @@ $result_rentals = mysqli_query($conn, $query_rentals);
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="footer">
       <div class="footer-wrapper">
         <div class="footer-section about">
           <h3>CasaNova</h3>
@@ -133,6 +133,14 @@ $result_rentals = mysqli_query($conn, $query_rentals);
         <?php else: ?>
           window.location.href = 'property-details.php?id=' + rentalId + '&type=rent';
         <?php endif; ?>
+      }
+
+      function scrollToFooter(event) {
+        event.preventDefault();
+        const footer = document.getElementById('footer');
+        if (footer) {
+          footer.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     </script>
   </body>
