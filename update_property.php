@@ -1,6 +1,7 @@
 <?php
 session_start();
-include 'db_connection.php';
+require_once 'db_connection.php';
+require_once 'classes/Property.php';
 
 // Kontrollo nëse përdoruesi është admin ose superadmin
 if (!isset($_SESSION['user_id']) || ($_SESSION['user_role'] != 2 && $_SESSION['user_role'] != 3)) {
@@ -9,6 +10,14 @@ if (!isset($_SESSION['user_id']) || ($_SESSION['user_role'] != 2 && $_SESSION['u
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $property = new Property($conn);
+    
+    if (!$property->validate($_POST)) {
+        $_SESSION['errors'] = $property->getErrors();
+        header("Location: edit_property.php?id=" . $_POST['property_id']);
+        exit();
+    }
+
     $property_id = $_POST['property_id'];
     $title = $_POST['title'];
     $price = $_POST['price'];

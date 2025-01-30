@@ -1,34 +1,37 @@
 <?php
 session_start();
-include 'db_connection.php';
+require_once 'db_connection.php';
+require_once 'classes/Property.php';
 
-// Check if user is admin or superadmin
+// Kontrollo nëse përdoruesi është admin ose superadmin
 if (!isset($_SESSION['user_id']) || ($_SESSION['user_role'] != 2 && $_SESSION['user_role'] != 3)) {
     header("Location: login.html");
     exit();
 }
 
-// Check if property ID is provided
-if (!isset($_GET['id'])) {
+$property = new Property($conn);
+$errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
+unset($_SESSION['errors']);
+
+// Merr të dhënat e pronës
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $propertyData = $result->fetch_assoc();
+
+    if (!$propertyData) {
+        $_SESSION['error'] = "Property not found.";
+        header("Location: manage_properties.php");
+        exit();
+    }
+} else {
     header("Location: manage_properties.php");
     exit();
 }
-
-$property_id = $_GET['id'];
-
-// Fetch property details
-$sql = "SELECT * FROM products WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $property_id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-    header("Location: manage_properties.php");
-    exit();
-}
-
-$property = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +42,7 @@ $property = $result->fetch_assoc();
     <title>Edit Property - CasaNova</title>
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="validation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -53,65 +57,67 @@ $property = $result->fetch_assoc();
         </div>
 
         <form action="update_property.php" method="POST" enctype="multipart/form-data" class="property-form">
-            <input type="hidden" name="property_id" value="<?php echo $property['id']; ?>">
+            <input type="hidden" name="property_id" value="<?php echo htmlspecialchars($propertyData['id']); ?>">
             
             <div class="form-group">
-                <label for="title">Property Title</label>
-                <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($property['title']); ?>" required>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" 
+                    value="<?php echo htmlspecialchars($propertyData['title'] ?? ''); ?>" required>
+                <?php if (isset($errors['title'])): ?>
+                    <div class="error-message"><?php echo $errors['title']; ?></div>
+                <?php endif; ?>
             </div>
 
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" required><?php echo htmlspecialchars($property['description']); ?></textarea>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="price">Price (€)</label>
-                    <input type="number" id="price" name="price" value="<?php echo $property['price']; ?>" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="area">Area (m²)</label>
-                    <input type="number" id="area" name="area" value="<?php echo $property['area']; ?>" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="bedrooms">Bedrooms</label>
-                    <input type="number" id="bedrooms" name="bedrooms" value="<?php echo $property['bedrooms']; ?>" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="bathrooms">Bathrooms</label>
-                    <input type="number" id="bathrooms" name="bathrooms" value="<?php echo $property['bathrooms']; ?>" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" id="location" name="location" value="<?php echo htmlspecialchars($property['location']); ?>" required>
-            </div>
-
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select id="status" name="status" required>
-                    <option value="available" <?php echo $property['status'] == 'available' ? 'selected' : ''; ?>>Available</option>
-                    <option value="sold" <?php echo $property['status'] == 'sold' ? 'selected' : ''; ?>>Sold</option>
-                    <option value="pending" <?php echo $property['status'] == 'pending' ? 'selected' : ''; ?>>Pending</option>
+                <label for="type">Type:</label>
+                <select id="type" name="type" required>
+                    <option value="sale" <?php echo ($propertyData['type'] ?? '') == 'sale' ? 'selected' : ''; ?>>For Sale</option>
+                    <option value="rent" <?php echo ($propertyData['type'] ?? '') == 'rent' ? 'selected' : ''; ?>>For Rent</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="new_image">Update Image (leave empty to keep current image)</label>
-                <input type="file" id="new_image" name="new_image" accept="image/*">
-                <input type="hidden" name="current_image" value="<?php echo $property['image']; ?>">
+                <label for="price">Price:</label>
+                <input type="number" step="0.01" id="price" name="price" 
+                    value="<?php echo htmlspecialchars($propertyData['price'] ?? ''); ?>" required>
+                <?php if (isset($errors['price'])): ?>
+                    <div class="error-message"><?php echo $errors['price']; ?></div>
+                <?php endif; ?>
             </div>
 
-            <div class="current-image">
-                <p>Current Image:</p>
-                <img src="<?php echo $property['image']; ?>" alt="Current Property Image" style="max-width: 200px;">
+            <div class="form-group">
+                <label for="area">Area (m²):</label>
+                <input type="number" step="0.01" id="area" name="area" 
+                    value="<?php echo htmlspecialchars($propertyData['area'] ?? ''); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bedrooms">Bedrooms:</label>
+                <input type="number" id="bedrooms" name="bedrooms" 
+                    value="<?php echo htmlspecialchars($propertyData['bedrooms'] ?? ''); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bathrooms">Bathrooms:</label>
+                <input type="number" id="bathrooms" name="bathrooms" 
+                    value="<?php echo htmlspecialchars($propertyData['bathrooms'] ?? ''); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="features">Features:</label>
+                <textarea id="features" name="features" required><?php echo htmlspecialchars($propertyData['features'] ?? ''); ?></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Update Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                <?php if (!empty($propertyData['image_url'])): ?>
+                    <div class="current-image">
+                        <p>Current Image:</p>
+                        <img src="fotot/<?php echo htmlspecialchars($propertyData['image_url']); ?>" 
+                             alt="Current Property Image" style="max-width: 200px;">
+                    </div>
+                <?php endif; ?>
             </div>
 
             <div class="form-actions">
