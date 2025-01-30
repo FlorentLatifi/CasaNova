@@ -15,7 +15,13 @@ session_start();
     <!-- <link rel="stylesheet" href="dashboard.css" /> -->
   </head>
   <body>
-    <?php include 'classes/nav.php'; ?>
+    <?php
+    if (file_exists('nav.php')) {
+        include 'nav.php';
+    } else {
+        echo "<p>Navigation file not found.</p>";
+    }
+    ?>
 
     <div class="header" id="intro">
       <div class="header-content">
