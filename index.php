@@ -8,11 +8,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CasaNova</title>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="navbar.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Remove dashboard.css if not needed -->
-    <!-- <link rel="stylesheet" href="dashboard.css" /> -->
+    <!-- <link rel="stylesheet" href="css/dashboard.css" /> -->
   </head>
   <body>
     <?php
@@ -23,7 +23,7 @@ session_start();
     }
     ?>
 
-    <div class="header" id="intro">
+    <div class="header" id="intro" style="background-image: url('fotot/k-lesu-celem-k-mestu-zady-1___media_library_original_1567_881.jpg');">
       <div class="header-content">
         <h1>Welcome to <span>CasaNova Neighborhood</span></h1>
         <h3><b>Where Every Home Becomes Part of a Timeless Story</b></h3>

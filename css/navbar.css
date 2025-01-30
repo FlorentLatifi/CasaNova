@@ -116,14 +116,14 @@
 
 /* Login/Signup Buttons */
 .navbar-login {
-  background-color: #4a90e2;
+  background-color: #333; /* Dark grey background */
   color: white !important;
   border-radius: 4px;
   padding: 8px 16px !important;
 }
 
 .navbar-login:hover {
-  background-color: #357abd;
+  background-color: #555;
 }
 
 /* Icon Styles */
@@ -222,4 +222,16 @@
     justify-content: center;
     padding: 10px 0;
   }
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: #333; /* Dark grey background */
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #555;
 }

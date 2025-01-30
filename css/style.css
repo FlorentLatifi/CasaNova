@@ -90,12 +90,13 @@ body {
   padding: 0.8rem 1.5rem;
   border: 2px solid white;
   border-radius: 30px;
+  background-color: #333; /* Dark grey background */
   transition: all 0.3s ease;
 }
 
 .header-actions a:hover {
-  background-color: white;
-  color: #333;
+  background-color: #555;
+  color: white;
 }
 
 .header-list ul {
@@ -326,16 +327,17 @@ body {
   display: block;
   margin-top: 15px;
   padding: 10px 20px;
-  background-color: #e0e0e0;
-  color: black;
+  background-color: #333; /* Dark grey background */
+  color: white;
   text-decoration: none;
   text-align: center;
   border-radius: 4px;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .buy-button:hover {
-  background-color: #c0c0c0;
+  background-color: #555;
 }
 
 /* Responsive Design */
@@ -554,18 +556,20 @@ body {
   color: #666;
 }
 
-.buy-button {
+.buy-button,
+.rent-button {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  background-color: #4a90e2;
+  background-color: #333; /* Dark grey background */
   color: white;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
-.buy-button:hover {
-  background-color: #357abd;
+.buy-button:hover,
+.rent-button:hover {
+  background-color: #555;
 }
 
 /* Për fotot e klientëve në testimonials */
