@@ -1,19 +1,18 @@
-/* slider.css - Modern Minimal Style */
+/* Stili modern i ri për slider-in */
 .slider-container {
   position: relative;
   width: 1200px;
   height: 675px;
   overflow: hidden;
-  border-radius: 4px;
-  background: white;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  margin: 70px auto 20px; /* Account for fixed navbar */
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  margin: 70px auto 20px;
 }
 
 .slider {
   display: flex;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slide {
@@ -34,106 +33,111 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.92);
-  border-top: 1px solid #f0f0f0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .caption h3 {
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  color: #2c2c2c;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  font-family: "Inter", sans-serif;
 }
 
 .caption p {
-  color: #666;
-  font-size: 1rem;
-  line-height: 1.5;
-  max-width: 60%;
+  color: #595959;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 70%;
   margin: 0;
   font-weight: 400;
+  font-family: "Inter", sans-serif;
 }
 
-/* Navigation Buttons */
+/* Butonat e navigimit */
 .prev,
 .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #4a90e2;
-  color: white;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c2c2c;
   border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background 0.2s ease;
+  font-size: 1.4rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .prev:hover,
 .next:hover {
-  background: #357abd;
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .prev {
-  left: 20px;
+  left: 24px;
 }
 
 .next {
-  right: 20px;
+  right: 24px;
 }
 
-/* Progress Indicators */
+/* Treguesit e progresit */
 .progress-container {
   position: absolute;
-  bottom: 1rem;
+  bottom: 120px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 6px;
+  gap: 8px;
   z-index: 2;
 }
 
 .progress-item {
-  width: 32px;
-  height: 3px;
-  background: #e0e0e0;
-  border-radius: 2px;
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .progress-bar {
   width: 0%;
   height: 100%;
-  background: #4a90e2;
-  transition: width 0.3s ease;
+  background: #ffffff;
+  transition: width 0.4s ease;
 }
 
-/* Responsive Design */
+/* Dizajni responsiv */
 @media (max-width: 1280px) {
   .slider-container {
-    width: 95%;
+    width: 90%;
     height: 56.25vw;
-    max-height: 75vh;
+    max-height: 80vh;
   }
 
   .caption {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .caption h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   .caption p {
-    font-size: 0.9rem;
-    max-width: 70%;
+    font-size: 1rem;
+    max-width: 80%;
   }
 }
 
@@ -141,7 +145,33 @@
   .slider-container {
     border-radius: 0;
     margin-top: 60px;
-    height: 50vh;
+    width: 100%;
+  }
+
+  .caption h3 {
+    font-size: 1.2rem;
+  }
+
+  .caption p {
+    font-size: 0.95rem;
+    max-width: 90%;
+  }
+
+  .prev,
+  .next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .progress-item {
+    width: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .caption {
+    padding: 1rem;
   }
 
   .caption h3 {
@@ -149,38 +179,13 @@
   }
 
   .caption p {
-    max-width: 80%;
-    line-height: 1.4;
+    font-size: 0.9rem;
+    max-width: 100%;
   }
 
   .prev,
   .next {
     width: 36px;
     height: 36px;
-    font-size: 1rem;
-  }
-
-  .progress-item {
-    width: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  .caption {
-    padding: 0.8rem;
-  }
-
-  .caption h3 {
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .caption p {
-    font-size: 0.8rem;
-    max-width: 90%;
-  }
-
-  .progress-item {
-    width: 20px;
   }
 }
