@@ -1,8 +1,18 @@
 <?php
 
+// Ensure the db_connection.php file exists in the same directory
+if (!file_exists('db_connection.php')) {
+    die("Database connection file not found.");
+}
+
+include 'db_connection.php';
+
+// Check if the database connection is established
+if (!isset($conn)) {
+    die("Database connection error.");
+}
 
 session_start();
-include 'db_connection.php';
 
 // Kontrollo nëse përdoruesi është i kyçur dhe merr rolin
 $isLoggedIn = isset($_SESSION['user_id']);
@@ -83,8 +93,8 @@ $result_rentals = mysqli_query($conn, $query_rentals);
                 <span><i class="fas fa-bath"></i> <?php echo htmlspecialchars($rental['bathrooms']); ?> Bathrooms</span>
               </div>
               <p><i class="fas fa-star"></i> <?php echo htmlspecialchars($rental['features']); ?></p>
-              <p class="price">$<?php echo number_format($rental['price']); ?> /month</p>
-              <button class="buy-button" onclick="handleRent(<?php echo $rental['id']; ?>)">View Details</button>
+              <p class="price">$<?php echo number_format($rental['price']); ?></p>
+              <button class="rent-button" onclick="handleRent(<?php echo $rental['id']; ?>)">View Details</button>
             </div>
           </div>
         <?php endwhile; ?>

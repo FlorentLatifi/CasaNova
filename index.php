@@ -15,7 +15,13 @@ session_start();
     <!-- <link rel="stylesheet" href="dashboard.css" /> -->
   </head>
   <body>
-    <?php include 'nav.php'; ?>
+    <?php
+    if (file_exists('nav.php')) {
+        include 'nav.php';
+    } else {
+        echo "<p>Navigation file not found.</p>";
+    }
+    ?>
 
     <div class="header" id="intro">
       <div class="header-content">
@@ -106,7 +112,76 @@ session_start();
               <a href="buy.php" class="buy-button">View Details</a>
             </div>
           </div>
-          <!-- Përsëritni të njëjtën strukturë për shtëpitë e tjera -->
+          <div class="property-card">
+            <div class="property-image">
+              <img src="fotot/2270901_cainc0259_1-2000-36b6699219454ee298de1d4565f1ab7d.jpg" alt="Luxury Villa">
+            </div>
+            <div class="property-details">
+              <h3>Luxury Villa</h3>
+              <div class="property-info">
+                <span><i class="fas fa-ruler-combined"></i> 350 m²</span>
+                <span><i class="fas fa-bed"></i> 5 Bedrooms</span>
+                <span><i class="fas fa-bath"></i> 4 Bathrooms</span>
+              </div>
+              <a href="buy.php" class="buy-button">View Details</a>
+            </div>
+          </div>
+          <div class="property-card">
+            <div class="property-image">
+              <img src="fotot/shtepi_363-1536x861.jpg" alt="Cozy Cottage">
+            </div>
+            <div class="property-details">
+              <h3>Cozy Cottage</h3>
+              <div class="property-info">
+                <span><i class="fas fa-ruler-combined"></i> 150 m²</span>
+                <span><i class="fas fa-bed"></i> 3 Bedrooms</span>
+                <span><i class="fas fa-bath"></i> 2 Bathrooms</span>
+              </div>
+              <a href="buy.php" class="buy-button">View Details</a>
+            </div>
+          </div>
+          <div class="property-card">
+            <div class="property-image">
+              <img src="fotot/shitet-shtepija-ne-veternik-lagjja-qendresa-207m2.jpeg" alt="Urban Apartment">
+            </div>
+            <div class="property-details">
+              <h3>Urban Apartment</h3>
+              <div class="property-info">
+                <span><i class="fas fa-ruler-combined"></i> 100 m²</span>
+                <span><i class="fas fa-bed"></i> 2 Bedrooms</span>
+                <span><i class="fas fa-bath"></i> 1 Bathroom</span>
+              </div>
+              <a href="buy.php" class="buy-button">View Details</a>
+            </div>
+          </div>
+          <div class="property-card">
+            <div class="property-image">
+              <img src="fotot/luxuryhome-3.jpg.webp" alt="New House 1">
+            </div>
+            <div class="property-details">
+              <h3>Modern House</h3>
+              <div class="property-info">
+                <span><i class="fas fa-ruler-combined"></i> 200 m²</span>
+                <span><i class="fas fa-bed"></i> 3 Bedrooms</span>
+                <span><i class="fas fa-bath"></i> 2 Bathrooms</span>
+              </div>
+              <a href="buy.php" class="buy-button">View Details</a>
+            </div>
+          </div>
+          <div class="property-card">
+            <div class="property-image">
+              <img src="fotot/moderni-dum-s-orientalnim-usporadanim-a-zelenou-strechou-praha1___media_library_original_1567_1045.jpg" alt="New House 2">
+            </div>
+            <div class="property-details">
+              <h3>Luxury Villa</h3>
+              <div class="property-info">
+                <span><i class="fas fa-ruler-combined"></i> 300 m²</span>
+                <span><i class="fas fa-bed"></i> 4 Bedrooms</span>
+                <span><i class="fas fa-bath"></i> 3 Bathrooms</span>
+              </div>
+              <a href="buy.php" class="buy-button">View Details</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
