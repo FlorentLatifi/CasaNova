@@ -26,7 +26,7 @@ $userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null;
                 
                 <?php if (!isset($_SESSION['user_id'])): ?>
                     <li><a href="login.html" class="navbar-login">Log In</a></li>
-                    <li><a href="signup.html" class="navbar-login">Sign Up</a></li>
+                    <li><a href="signup.php" class="navbar-login">Sign Up</a></li>
                 
                 <?php elseif ($userRole == 2): // Admin ?>
                     <li class="dropdown">
@@ -57,7 +57,6 @@ $userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null;
                         </a>
                         <div class="dropdown-content">
                             <a href="superadmin_dashboard.php"><i class="fas fa-crown"></i> Superadmin Dashboard</a>
-                            <a href="admin_dashboard.php"><i class="fas fa-home"></i> Admin Dashboard</a>
                             <a href="manage_properties.php"><i class="fas fa-building"></i> Property Dashboard</a>
                             <a href="dashboard.php"><i class="fas fa-users"></i> User Dashboard</a>
                             <a href="add_property.php"><i class="fas fa-plus-circle"></i> Add Property</a>
