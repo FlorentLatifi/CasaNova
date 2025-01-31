@@ -591,3 +591,34 @@ body {
 .social-icon:hover {
   transform: scale(1.1);
 }
+
+.property-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.property-details {
+  max-width: 800px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.property-details h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.property-details p {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.property-details p strong {
+  color: #333;
+}

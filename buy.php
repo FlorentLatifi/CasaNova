@@ -41,7 +41,7 @@ $result_rentals = mysqli_query($conn, $query_rentals);
     <?php include 'nav.php'; ?>
 
     <main>
-      <section class="hero">
+      <section class="hero" style="background-image: url(fotot\vecteezy_modern-architectural-home-with-pool-at-dusk-in-tranquil-setting_48833439.jpeg)">
         <h1>Buy Your Dream Home</h1>
         <p>Find the perfect house for you and your family.</p>
       </section>
@@ -67,7 +67,7 @@ $result_rentals = mysqli_query($conn, $query_rentals);
               </div>
               <p><i class="fas fa-star"></i> <?php echo htmlspecialchars($house['features']); ?></p>
               <p class="price">$<?php echo number_format($house['price']); ?></p>
-              <button class="buy-button" onclick="handleBuy(<?php echo $house['id']; ?>)">View Details</button>
+              <a href="property-details.php?id=<?php echo $house['id']; ?>&type=sale" class="buy-button">View Details</a>
             </div>
           </div>
         <?php endwhile; ?>
@@ -90,11 +90,11 @@ $result_rentals = mysqli_query($conn, $query_rentals);
               <div class="property-info">
                 <span><i class="fas fa-ruler-combined"></i> <?php echo htmlspecialchars($rental['area']); ?> m²</span>
                 <span><i class="fas fa-bed"></i> <?php echo htmlspecialchars($rental['bedrooms']); ?> Bedrooms</span>
-                <span><i class="fas fa-bath"></i> <?php echo htmlspecialchars($rental['bathrooms']); ?> Bathrooms</span>
+                <span><i class="fas fa-bath"></i> <?php echo htmlspecialchars($rental['bathrooms']); ?></span>
               </div>
               <p><i class="fas fa-star"></i> <?php echo htmlspecialchars($rental['features']); ?></p>
               <p class="price">$<?php echo number_format($rental['price']); ?></p>
-              <button class="rent-button" onclick="handleRent(<?php echo $rental['id']; ?>)">View Details</button>
+              <a href="property-details.php?id=<?php echo $rental['id']; ?>&type=rent" class="rent-button">View Details</a>
             </div>
           </div>
         <?php endwhile; ?>
