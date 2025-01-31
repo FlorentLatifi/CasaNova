@@ -6,11 +6,11 @@
   <title>Image Slider Modern</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="navbar.css">
-  <link rel="stylesheet" href="slider.css">
+
+  <link rel="stylesheet" href="css/slider.css">
 </head>
 <body>
-<?php require 'nav.php'; ?>
+
 
   <div class="slider-container">
     <?php

@@ -100,6 +100,7 @@ $result_rentals = mysqli_query($conn, $query_rentals);
         <?php endwhile; ?>
       </section>
     </main>
+    <?php include 'test.php'; ?>
 
     <footer class="site-footer" id="footer">
       <div class="footer-wrapper">

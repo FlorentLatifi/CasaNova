@@ -1,7 +1,8 @@
 /* Stili modern i ri për slider-in */
 .slider-container {
   position: relative;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   height: 675px;
   overflow: hidden;
   border-radius: 12px;
@@ -41,7 +42,7 @@
 
 .caption h3 {
   color: #2c2c2c;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
   font-weight: 500;
   margin-bottom: 0.75rem;
   font-family: "Inter", sans-serif;
@@ -49,7 +50,7 @@
 
 .caption p {
   color: #595959;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   line-height: 1.6;
   max-width: 70%;
   margin: 0;
@@ -76,6 +77,7 @@
   font-size: 1.4rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .prev:hover,
@@ -110,6 +112,7 @@
   background: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .progress-bar {
@@ -122,70 +125,38 @@
 /* Dizajni responsiv */
 @media (max-width: 1280px) {
   .slider-container {
-    width: 90%;
+    width: 95%;
     height: 56.25vw;
     max-height: 80vh;
+    margin: 40px auto;
   }
-
-  .caption {
-    padding: 1.5rem;
+  
+  .slide {
+    height: 100%;
   }
-
-  .caption h3 {
-    font-size: 1.4rem;
-  }
-
-  .caption p {
-    font-size: 1rem;
-    max-width: 80%;
-  }
-}
-
-@media (max-width: 768px) {
-  .slider-container {
-    border-radius: 0;
-    margin-top: 60px;
-    width: 100%;
-  }
-
-  .caption h3 {
-    font-size: 1.2rem;
-  }
-
-  .caption p {
-    font-size: 0.95rem;
-    max-width: 90%;
-  }
-
+  
   .prev,
   .next {
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
   }
-
-  .progress-item {
-    width: 32px;
-  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .caption {
-    padding: 1rem;
+    padding: 1.5rem;
   }
-
-  .caption h3 {
-    font-size: 1.1rem;
-  }
-
+  
   .caption p {
-    font-size: 0.9rem;
     max-width: 100%;
   }
-
-  .prev,
-  .next {
-    width: 36px;
-    height: 36px;
+  
+  .progress-container {
+    bottom: 100px;
+  }
+  
+  .progress-item {
+    width: 30px;
   }
 }
