@@ -890,11 +890,12 @@ body {
 
 .edit-property-form .form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 1rem;
 }
 
-.edit-property-form .form-actions button {
+.edit-property-form .form-actions button,
+.edit-property-form .form-actions .cancel-btn {
   padding: 0.8rem 1.5rem;
   background-color: #333;
   color: white;
@@ -902,8 +903,76 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
-.edit-property-form .form-actions button:hover {
+.edit-property-form .form-actions button:hover,
+.edit-property-form .form-actions .cancel-btn:hover {
+  background-color: #555;
+}
+
+.add-property-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.add-property-form {
+  max-width: 800px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.add-property-form h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.add-property-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.add-property-form .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.add-property-form .form-group input,
+.add-property-form .form-group select,
+.add-property-form .form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.add-property-form .form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.add-property-form .form-actions button,
+.add-property-form .form-actions .cancel-btn {
+  padding: 0.8rem 1.5rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.add-property-form .form-actions button:hover,
+.add-property-form .form-actions .cancel-btn:hover {
   background-color: #555;
 }
