@@ -81,5 +81,7 @@ $property = $result->fetch_assoc();
             </div>
         </form>
     </div>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>

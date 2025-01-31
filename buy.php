@@ -19,11 +19,11 @@ $isLoggedIn = isset($_SESSION['user_id']);
 $userRole = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null;
 
 // Merr shtëpitë për shitje nga databaza
-$query_houses = "SELECT * FROM products WHERE type = 'sale' AND status = 'available' ORDER BY created_at DESC";
+$query_houses = "SELECT * FROM products WHERE type = 'sale' AND status = 'available' ORDER BY created_at DESC LIMIT 3";
 $result_houses = mysqli_query($conn, $query_houses);
 
 // Merr shtëpitë për qira nga databaza
-$query_rentals = "SELECT * FROM products WHERE type = 'rent' AND status = 'available' ORDER BY created_at DESC";
+$query_rentals = "SELECT * FROM products WHERE type = 'rent' AND status = 'available' ORDER BY created_at DESC LIMIT 3";
 $result_rentals = mysqli_query($conn, $query_rentals);
 ?>
 
@@ -41,7 +41,7 @@ $result_rentals = mysqli_query($conn, $query_rentals);
     <?php include 'nav.php'; ?>
 
     <main>
-      <section class="hero" style="background-image: url(fotot\vecteezy_modern-architectural-home-with-pool-at-dusk-in-tranquil-setting_48833439.jpeg)">
+      <section class="hero">
         <h1>Buy Your Dream Home</h1>
         <p>Find the perfect house for you and your family.</p>
       </section>
@@ -74,18 +74,18 @@ $result_rentals = mysqli_query($conn, $query_rentals);
       </section>
 
       <h2 class="section-title">Houses for Rent</h2>
-      <section class="rental-listings">
+      <section class="house-listings">
         <?php while($rental = mysqli_fetch_assoc($result_rentals)): ?>
-          <div class="rental">
+          <div class="house">
             <?php 
               $image_path = !empty($rental['image_url']) ? "fotot/" . $rental['image_url'] : "fotot/default-house.jpg";
               echo "<!-- Debug: Using image path: " . $image_path . " -->";
             ?>
             <img src="<?php echo htmlspecialchars($image_path); ?>" 
                  alt="<?php echo htmlspecialchars($rental['title']); ?>" 
-                 class="rental-img" 
+                 class="house-img" 
                  onerror="this.src='fotot/default-house.jpg'"/>
-            <div class="rental-details">
+            <div class="house-details">
               <h2><?php echo htmlspecialchars($rental['title']); ?></h2>
               <div class="property-info">
                 <span><i class="fas fa-ruler-combined"></i> <?php echo htmlspecialchars($rental['area']); ?> m²</span>
@@ -100,34 +100,8 @@ $result_rentals = mysqli_query($conn, $query_rentals);
         <?php endwhile; ?>
       </section>
     </main>
-    <?php include 'test.php'; ?>
 
-    <footer class="site-footer" id="footer">
-      <div class="footer-wrapper">
-        <div class="footer-section about">
-          <h3>CasaNova</h3>
-          <p>Elevate your lifestyle with thoughtfully designed homes, exceptional amenities, 
-             and a vibrant community tailored for modern living.</p>
-        </div>
-
-        <div class="footer-section links">
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="#intro">Home</a></li>
-            <li><a href="buy.php">Buy</a></li>
-            <li><a href="#">Sell</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section contact">
-          <h4>Get in Touch</h4>
-          <p><i class="fas fa-envelope"></i> info@casanova.com</p>
-          <p><i class="fas fa-phone"></i> +383 44 123 456</p>
-          <p><i class="fas fa-map-marker-alt"></i> Prishtina, Kosovo</p>
-        </div>
-      </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
     <script>
       function handleBuy(houseId) {

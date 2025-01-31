@@ -19,7 +19,7 @@ body {
 /* Updated Navbar Styles */
 .nav {
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   position: sticky;
   top: 0;
@@ -102,7 +102,7 @@ body {
   right: 0;
   background-color: white;
   min-width: 200px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   z-index: 1001;
 }
@@ -147,11 +147,11 @@ body {
   .nav-container {
     padding: 0 15px;
   }
-  
+
   .nav-list ul {
     gap: 15px;
   }
-  
+
   .nav-list a {
     font-size: 13px;
     padding: 6px 10px;
@@ -164,36 +164,36 @@ body {
     flex-direction: column;
     padding: 15px;
   }
-  
+
   .nav-logo {
     margin-bottom: 15px;
   }
-  
+
   .nav-list {
     width: 100%;
   }
-  
+
   .nav-list ul {
     flex-direction: column;
     width: 100%;
     gap: 10px;
   }
-  
+
   .nav-list li {
     width: 100%;
     justify-content: center;
   }
-  
+
   .dropdown {
     width: 100%;
   }
-  
+
   .dropdown-content {
     position: static;
     width: 100%;
     box-shadow: none;
   }
-  
+
   .navbar-login {
     width: 100%;
     text-align: center;
@@ -203,7 +203,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: url('../fotot/vecteezy_modern-architectural-home-with-pool-at-dusk-in-tranquil-setting_48833439.jpeg');
+  background-image: url("../fotot/vecteezy_modern-architectural-home-with-pool-at-dusk-in-tranquil-setting_48833439.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -219,7 +219,7 @@ body {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -229,7 +229,7 @@ body {
   z-index: 1;
 }
 
-.hero h1, 
+.hero h1,
 .hero p {
   position: relative;
   z-index: 2;
@@ -255,94 +255,100 @@ body {
 }
 
 /* Property Listings */
-.house-listings, .rental-listings {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+.house-listings,
+.rental-listings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
-.house, .rental {
-  background: white;
+.house,
+.rental {
+  background-color: white;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  width: 300px;
   transition: transform 0.3s ease;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.house:hover, .rental:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+.house:hover,
+.rental:hover {
+  transform: translateY(-5px);
 }
 
-.house-img, .rental-img {
+.house-img,
+.rental-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-.house-details, .rental-details {
-  padding: 1.2rem;
-  flex: 1;
+.house-details,
+.rental-details {
+  padding: 15px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.house-details h2, .rental-details h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
+.house-details h2,
+.rental-details h2 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
   color: #333;
 }
 
 .property-info {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin: 0.8rem 0;
-  padding: 0.8rem 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .property-info span {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #666;
+  gap: 5px;
   font-size: 0.9rem;
+  color: #555;
 }
 
 .property-info i {
   color: #4a90e2;
-  font-size: 1.1rem;
 }
 
 .price {
-  font-size: 1.5rem;
-  color: #4a90e2;
-  font-weight: 600;
-  margin: 1rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.buy-btn {
-  margin-top: auto;
-  padding: 0.8rem;
-  background-color: #4a90e2;
+.buy-button,
+.rent-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333; /* Dark grey background */
   color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
   transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
 }
 
-.buy-btn:hover {
-  background-color: #357abd;
+.buy-button:hover,
+.rent-button:hover {
+  background-color: #555; /* Slightly lighter grey on hover */
 }
 
 /* Filters Section */
@@ -352,7 +358,7 @@ body {
   padding: 20px;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .filters form {
@@ -401,7 +407,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   width: 90%;
   max-width: 400px;
@@ -502,24 +508,26 @@ body {
   .hero h1 {
     font-size: 2rem;
   }
-  
+
   .hero p {
     font-size: 1rem;
   }
-  
-  .house-listings, .rental-listings {
+
+  .house-listings,
+  .rental-listings {
     grid-template-columns: 1fr;
   }
-  
-  .house-img, .rental-img {
+
+  .house-img,
+  .rental-img {
     height: 180px;
   }
-  
+
   .footer-wrapper {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .footer-section.contact p {
     justify-content: center;
   }
@@ -550,7 +558,7 @@ body {
 }
 
 .rent-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -563,4 +571,3 @@ body {
 .rent-btn:hover {
   background-color: #45a049;
 }
-

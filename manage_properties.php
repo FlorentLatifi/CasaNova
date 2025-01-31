@@ -99,6 +99,8 @@ $result = $conn->query($sql);
         </div>
     </div>
 
+    <?php include 'footer.php'; ?>
+
     <script>
     function updateStatus(select) {
         const propertyId = select.dataset.id;
@@ -142,4 +144,4 @@ $result = $conn->query($sql);
     }
     </script>
 </body>
-</html> 
+</html>

@@ -690,17 +690,6 @@ body {
   color: #777;
 }
 
-.social-links a {
-  color: #ffffff;
-  margin-right: 15px;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #777;
-}
-
 .footer-bottom {
   font-weight: bold;
   text-align: center;
@@ -975,4 +964,33 @@ body {
 .add-property-form .form-actions button:hover,
 .add-property-form .form-actions .cancel-btn:hover {
   background-color: #555;
+}
+
+button,
+.buy-button,
+.rent-button,
+.cancel-btn,
+.submit-btn,
+.add-btn,
+.action-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333; /* Dark grey background */
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover,
+.buy-button:hover,
+.rent-button:hover,
+.cancel-btn:hover,
+.submit-btn:hover,
+.add-btn:hover,
+.action-btn:hover {
+  background-color: #555; /* Slightly lighter grey on hover */
 }

@@ -21,7 +21,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
   <body>
     <?php include 'nav.php'; ?>
 
-    <div class="header" id="intro">
+    <div class="header" id="intro" style="background-image: url('fotot/k-lesu-celem-k-mestu-zady-1___media_library_original_1567_881.jpg');">
       <div class="header-content">
         <h1>Welcome to <span>CasaNova Neighborhood</span></h1>
         <h3><b>Where Every Home Becomes Part of a Timeless Story</b></h3>
@@ -103,7 +103,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
             <p>Area: 250 m²</p>
             <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
 
-            <a href="buy.htm" class="buy-button">Buy</a>
+            <a href="buy.php" class="buy-button">Buy</a>
           </div>
         </div>
 
@@ -118,7 +118,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
             <p>Area: 350 m²</p>
             <p>Rooms: 5 Bedrooms, 4 Bathrooms</p>
 
-            <a href="buy.htm" class="buy-button">Buy</a>
+            <a href="buy.php" class="buy-button">Buy</a>
           </div>
         </div>
 
@@ -132,7 +132,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
             <p>Area: 180 m²</p>
             <p>Rooms: 3 Bedrooms, 2 Bathrooms</p>
 
-            <a href="buy.htm" class="buy-button">Buy</a>
+            <a href="buy.php" class="buy-button">Buy</a>
           </div>
         </div>
 
@@ -147,7 +147,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 1) {
             <p>Area: 300 m²</p>
             <p>Rooms: 4 Bedrooms, 3 Bathrooms</p>
 
-            <a href="buy.htm" class="buy-button">Buy</a>
+            <a href="buy.php" class="buy-button">Buy</a>
           </div>
         </div>
       </div>
