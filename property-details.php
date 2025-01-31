@@ -35,7 +35,7 @@ $image_url = !empty($property['image_url']) ? htmlspecialchars($property['image_
     <?php include 'nav.php'; ?>
 
     <section class="hero" style="background-image: url('fotot/<?php echo $image_url; ?>');">
-        <h1>Buy Your Dream Home</h1>
+        <h1><?php echo htmlspecialchars($property['title']); ?></h1>
         <p>Find the perfect house for you and your family.</p>
     </section>
 

@@ -994,3 +994,24 @@ button:hover,
 .action-btn:hover {
   background-color: #555; /* Slightly lighter grey on hover */
 }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px; /* Increased height */
+  color: white;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
