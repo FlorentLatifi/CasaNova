@@ -40,23 +40,14 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Property - CasaNova</title>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="validation.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php include 'nav.php'; ?>
 
-    <div class="dashboard-container">
-        <div class="header-actions">
+    <div class="edit-property-container">
+        <form class="edit-property-form" action="update_property.php" method="POST" enctype="multipart/form-data">
             <h1>Edit Property</h1>
-            <a href="manage_properties.php" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Back to Properties
-            </a>
-        </div>
-
-        <form action="update_property.php" method="POST" enctype="multipart/form-data" class="property-form">
             <input type="hidden" name="property_id" value="<?php echo htmlspecialchars($propertyData['id']); ?>">
             
             <div class="form-group">
@@ -156,4 +147,4 @@ if (isset($_GET['id'])) {
     }
     ?>
 </body>
-</html> 
+</html>

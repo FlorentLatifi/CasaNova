@@ -46,6 +46,230 @@ body {
   gap: 1rem;
 }
 
+/* Navigation Bar Styles */
+.nav {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 70px; /* Fixed height */
+}
+
+.nav-container {
+  max-width: 1400px; /* Increased max-width */
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-list {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.nav-list ul li:last-child {
+  margin-left: auto;
+}
+
+.nav-list li.dropdown {
+  margin-left: auto;
+}
+
+.nav-list a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-list a:hover {
+  color: #4a90e2;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1001;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
+}
+
+.navbar-login {
+  background-color: #333; /* Dark grey background */
+  color: white !important;
+  border-radius: 4px;
+  padding: 8px 16px !important;
+}
+
+.navbar-login:hover {
+  background-color: #555;
+}
+
+.fas {
+  font-size: 14px;
+  width: 16px;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .nav-list a {
+    padding: 0 8px;
+    font-size: 13px;
+  }
+
+  .nav-list ul {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nav-container {
+    padding: 0 15px;
+  }
+
+  .nav-list ul {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    height: 70px;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    height: 100%;
+  }
+
+  .nav-logo {
+    margin: 0;
+    z-index: 2;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+  .nav-list.active {
+    display: block;
+  }
+
+  .nav-list ul {
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 10px;
+  }
+
+  .nav-list li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    display: none;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-trigger {
+    justify-content: center;
+    padding: 10px 0;
+  }
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: #333; /* Dark grey background */
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #555;
+}
+
 .header {
   position: relative;
   height: 80vh;
@@ -621,4 +845,65 @@ body {
 
 .property-details p strong {
   color: #333;
+}
+
+.edit-property-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+
+.edit-property-form {
+  max-width: 800px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.edit-property-form h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.edit-property-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.edit-property-form .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.edit-property-form .form-group input,
+.edit-property-form .form-group select,
+.edit-property-form .form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.edit-property-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.edit-property-form .form-actions button {
+  padding: 0.8rem 1.5rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-property-form .form-actions button:hover {
+  background-color: #555;
 }
