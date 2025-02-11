@@ -3,7 +3,10 @@
 $serverName = "localhost";  // Emri ose IP-ja e serverit
 $username = "Diar";  // Përdoruesi i databazës
 $password = "Diar2005";  // Fjalëkalimi i databazës
-$dbname = "Projekti";       // Emri i databazës tuaj
+$dbname = "projekti";  // Emri i databazës tuaj (ensure this matches exactly with your database name)
+
+// Enable error reporting
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // Krijimi i lidhjes me MySQL/MariaDB
 $conn = new mysqli($serverName, $username, $password, $dbname);
