@@ -1,9 +1,9 @@
 <?php
 // Parametrat për lidhjen me bazën e të dhënave
 $serverName = "localhost";  // Emri ose IP-ja e serverit
-$username = "Diar";         // Përdoruesi i databazës
-$password = "Diar2005";     // Fjalëkalimi i databazës
-$dbname = "projekti";       // Emri i databazës tuaj
+$username = "correct_username";  // Përdoruesi i databazës
+$password = "correct_password";  // Fjalëkalimi i databazës
+$dbname = "Projekti";       // Emri i databazës tuaj
 
 // Krijimi i lidhjes me MySQL/MariaDB
 $conn = new mysqli($serverName, $username, $password, $dbname);
