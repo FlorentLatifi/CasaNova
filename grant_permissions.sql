@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON projekti.* TO 'Diar'@'localhost' IDENTIFIED BY 'Diar2005';
+FLUSH PRIVILEGES;
